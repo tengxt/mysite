@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}我的网站|页面找不到{% endblock %}
+{% block blog_active %}active{% endblock %}
+
+{% block header_extends %}
+	<link rel="stylesheet" href="{% static 'home.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+    404,你的页面走丢了...
+{% endblock %}
