@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0ada417d-d363-47cc-9c47-bb1959f88b7d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/bootstrap-3.3.7/css/bootstrap.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/bootstrap-3.3.7/css/bootstrap.min.css.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/bootstrap-3.3.7/js/bootstrap.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/static/jquery-1.12.4.min.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/blog/views.py" afterPath="$PROJECT_DIR$/blog/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mysite/views.py" afterPath="$PROJECT_DIR$/mysite/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/home.html" afterPath="$PROJECT_DIR$/templates/home.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,15 +19,15 @@
       <file leaf-file-name="base.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2187">
-              <caret line="134" column="61" lean-forward="true" selection-start-line="134" selection-start-column="61" selection-end-line="134" selection-end-column="61" />
+            <state relative-caret-position="144">
+              <caret line="8" column="98" lean-forward="true" selection-start-line="8" selection-start-column="98" selection-end-line="8" selection-end-column="98" />
               <folding>
-                <element signature="e#2797#2803#0#HTML" expanded="true" />
-                <element signature="e#3052#3058#0#HTML" expanded="true" />
-                <element signature="e#3866#3872#0#HTML" expanded="true" />
-                <element signature="e#4108#4114#0#HTML" expanded="true" />
-                <element signature="e#4414#4420#0#HTML" expanded="true" />
-                <element signature="e#4721#4727#0#HTML" expanded="true" />
+                <element signature="e#2896#2902#0#HTML" expanded="true" />
+                <element signature="e#3151#3157#0#HTML" expanded="true" />
+                <element signature="e#3965#3971#0#HTML" expanded="true" />
+                <element signature="e#4207#4213#0#HTML" expanded="true" />
+                <element signature="e#4513#4519#0#HTML" expanded="true" />
+                <element signature="e#4820#4826#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -60,7 +47,7 @@
         <entry file="file://$PROJECT_DIR$/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="72">
-              <caret line="4" column="30" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+              <caret line="4" column="30" lean-forward="false" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -82,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/blog/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
-              <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+              <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
               <folding>
                 <element signature="e#0#54#0" expanded="true" />
                 <element signature="e#384#1816#0" expanded="false" />
@@ -120,7 +107,7 @@
         <entry file="file://$PROJECT_DIR$/mysite/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
-              <caret line="24" column="56" lean-forward="true" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
+              <caret line="24" column="56" lean-forward="false" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -379,12 +366,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#2797#2803#0#HTML" expanded="true" />
-            <element signature="e#3052#3058#0#HTML" expanded="true" />
-            <element signature="e#3866#3872#0#HTML" expanded="true" />
-            <element signature="e#4108#4114#0#HTML" expanded="true" />
-            <element signature="e#4414#4420#0#HTML" expanded="true" />
-            <element signature="e#4721#4727#0#HTML" expanded="true" />
+            <element signature="e#2896#2902#0#HTML" expanded="true" />
+            <element signature="e#3151#3157#0#HTML" expanded="true" />
+            <element signature="e#3965#3971#0#HTML" expanded="true" />
+            <element signature="e#4207#4213#0#HTML" expanded="true" />
+            <element signature="e#4513#4519#0#HTML" expanded="true" />
+            <element signature="e#4820#4826#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -436,12 +423,12 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#2797#2803#0#HTML" expanded="true" />
-            <element signature="e#3052#3058#0#HTML" expanded="true" />
-            <element signature="e#3866#3872#0#HTML" expanded="true" />
-            <element signature="e#4108#4114#0#HTML" expanded="true" />
-            <element signature="e#4414#4420#0#HTML" expanded="true" />
-            <element signature="e#4721#4727#0#HTML" expanded="true" />
+            <element signature="e#2896#2902#0#HTML" expanded="true" />
+            <element signature="e#3151#3157#0#HTML" expanded="true" />
+            <element signature="e#3965#3971#0#HTML" expanded="true" />
+            <element signature="e#4207#4213#0#HTML" expanded="true" />
+            <element signature="e#4513#4519#0#HTML" expanded="true" />
+            <element signature="e#4820#4826#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -499,7 +486,7 @@
     <entry file="file://$PROJECT_DIR$/mysite/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="24" column="56" lean-forward="true" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
+          <caret line="24" column="56" lean-forward="false" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
           <folding />
         </state>
       </provider>
@@ -541,7 +528,7 @@
     <entry file="file://$PROJECT_DIR$/blog/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
-          <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
           <folding>
             <element signature="e#0#54#0" expanded="true" />
             <element signature="e#384#1816#0" expanded="false" />
@@ -573,22 +560,22 @@
     <entry file="file://$PROJECT_DIR$/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
-          <caret line="4" column="30" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+          <caret line="4" column="30" lean-forward="false" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2187">
-          <caret line="134" column="61" lean-forward="true" selection-start-line="134" selection-start-column="61" selection-end-line="134" selection-end-column="61" />
+        <state relative-caret-position="144">
+          <caret line="8" column="98" lean-forward="true" selection-start-line="8" selection-start-column="98" selection-end-line="8" selection-end-column="98" />
           <folding>
-            <element signature="e#2797#2803#0#HTML" expanded="true" />
-            <element signature="e#3052#3058#0#HTML" expanded="true" />
-            <element signature="e#3866#3872#0#HTML" expanded="true" />
-            <element signature="e#4108#4114#0#HTML" expanded="true" />
-            <element signature="e#4414#4420#0#HTML" expanded="true" />
-            <element signature="e#4721#4727#0#HTML" expanded="true" />
+            <element signature="e#2896#2902#0#HTML" expanded="true" />
+            <element signature="e#3151#3157#0#HTML" expanded="true" />
+            <element signature="e#3965#3971#0#HTML" expanded="true" />
+            <element signature="e#4207#4213#0#HTML" expanded="true" />
+            <element signature="e#4513#4519#0#HTML" expanded="true" />
+            <element signature="e#4820#4826#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
