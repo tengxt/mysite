@@ -5,18 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="baidu-site-verification" content="5CPePy4Wzm" />
+    <meta name="description" content="小涛博客，是一个记录技术心得和资源分享，记录生活点滴，分享兴趣爱好的个人博客。">
+    <meta name="keywords" content="小涛博客,tengxiaotao,个人博客,原创博客,资源下载,IT技术分享">
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'base.css' %}">
-    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}">
-    <script type="text/javascript" src="{% static 'jquery-1.12.4.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap3.3.7/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/font-awesome/css/font-awesome.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
     {% block header_extends %}{% endblock %}
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
+        <div class="container-fluid container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{% url 'home' %}">个人博客网站</a>
+                <a class="navbar-brand" href="{% url 'home' %}">小涛博客</a>
                 <button class="navbar-toggle collapsed"  data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -26,20 +28,36 @@
             <div id="navbar-collapse" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="{% block nav_home_active %}{% endblock %}">
-                        <a href="{% url 'home' %}">首页</a>
+                        <a href="{% url 'home' %}"><i class="fa fa-home"></i>&nbsp;首页</a>
                     </li>
                     <li class="{% block nav_blog_active %}{% endblock %}">
-                        <a href="{% url 'blog_list' %}">博客</a>
+                        <a href="{% url 'blog_list' %}"><i class="fa fa-book"></i>&nbsp;文章</a>
+                    </li>
+                    <li class="">
+                        <a href="{% url 'home' %}"><i class="fa fa-cloud"></i>&nbsp;技术</a>
+                    </li>
+                    <li class="">
+                        <a href="{% url 'home' %}"><i class="fa fa-pencil"></i>&nbsp;随笔</a>
+                    </li>
+                    <li class="">
+                        <a href="{% url 'home' %}"><i class="fa fa-calendar"></i>&nbsp;时间轴</a>
+                    </li>
+                    <li class="">
+                        <a href="{% url 'home' %}"><i class="fa fa-comments"></i>&nbsp;留言</a>
                     </li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
                     {% if not user.is_authenticated %}
                         <li>
-                            <a href="{% url 'login' %}?from={{ request.get_full_path }}">登录</a>
+                            <a href="{% url 'login' %}?from={{ request.get_full_path }}">
+                                <i class="fa fa-bell" aria-hidden="true"></i>&nbsp;登录
+                            </a>
                         </li>
                         <li>
-                            <a href="{% url 'register' %}?from={{ request.get_full_path }}">注册</a>
+                            <a href="{% url 'register' %}?from={{ request.get_full_path }}">
+                                <i class="fa fa-sign-in"></i>&nbsp;注册
+                            </a>
                         </li>
                     {% else %}
                         <li class="dropdown">
@@ -52,12 +70,24 @@
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="{% url 'user_info' %}">个人资料</a></li>
-                                <li><a href="{% url 'change_password' %}">修改密码</a></li>
+                                <li>
+                                    <a href="{% url 'user_info' %}"><i class="fa fa-user"></i>&nbsp;个人资料</a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'change_password' %}">
+                                        <i class="fa fa-pencil-square-o"></i>&nbsp;修改密码
+                                    </a>
+                                </li>
                                 {% if user.is_staff or user.is_superuser %}
-                                    <li><a href="{% url 'admin:index' %}">后台管理</a></li>
+                                    <li>
+                                        <a href="{% url 'admin:index' %}"><i class="fa fa-cog"></i>&nbsp;后台管理</a>
+                                    </li>
                                 {% endif %}
-                                <li><a href="{% url 'logout' %}?from={{ request.get_full_path }}">退出</a></li>
+                                <li>
+                                    <a href="{% url 'logout' %}?from={{ request.get_full_path }}">
+                                        <i class="fa fa-sign-out"></i>&nbsp;退出
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     {% endif %}
@@ -67,14 +97,8 @@
     </div>
 
     {% block content %}{% endblock %}
-	
-	<!-- footer -->
-	<div class="footer navbar-fixed-bottom">
-		<div class="website-info">
-			<p>Copyright&nbsp;©&nbsp;2018 <a href="javascript:void(0);">蜀ICP备18020741号-1</a></p>
-			<p>意见或问题请联系我（1300230407@qq.com）</p>
-		</div>
-	</div>
+
+
 
     <!-- Modal -->
     <div class="modal fade" id="login_modal" tabindex="-1" role="dialog">
@@ -103,6 +127,25 @@
             </div>
         </div>
     </div>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="container footer">
+        <p class="copyright">
+            <a href="javascrpt:void(0);">蜀ICP备18020741号-1</a>
+        </p>
+        <p class="link">
+                <a href="/sitemap.xml" target="_blank"><i class="fa fa-sitemap"></i>&nbsp;网站地图</a>
+                <a href="/rss" target="_blank"><i class="fa fa-rss-square"></i>&nbsp;RSS订阅</a>
+            </p>
+            <p class="beian">Copyright © 2018 tengxt.com All Rights Reserved.</p>
+      </div>
+    </footer>
+
+
+    <script type="text/javascript" src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    {% block script_extends %}{% endblock %}
     <script type="text/javascript">
         $("#login_medal_form").submit(function(event){
             event.preventDefault();
@@ -121,7 +164,5 @@
             });
         });
     </script>
-
-    {% block script_extends %}{% endblock %}
 </body>
 </html>

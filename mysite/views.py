@@ -36,3 +36,4 @@ def home(request):
     context['yesterday_hot_data'] = get_yesterday_hot_data(blog_content_type)
     context['hot_blogs_for_7_days'] = hot_blogs_for_7_days
     return render(request, 'home.html', context)
+
