@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',  # ckeditor
     'ckeditor_uploader',  # ckeditor_uploader
+    'mdeditor', # mdeditor
 	'blog', # blog app
     'read_statistics', # read_statistics
     'comment', #comment
@@ -114,7 +115,7 @@ STATICFILES_DIRS = [
 
 # media
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mdeditor')
 
 # 配置cheditor
 CKEDITOR_UPLOAD_PATH = 'upload/'

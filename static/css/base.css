@@ -17,7 +17,7 @@ button.qb_reg {background-color: #10a5a5;color: #fff;width: 60px;padding: 6px 12
 /* header end */
 
 /* footer begin*/
-footer{padding-top: 70px;background-color: #e0e0e0;display: block;  font-size: 13px;  padding-top: 20px;  padding-bottom: 20px;  color: #000;  text-align: center;  line-height: 25px; }
+footer{padding-top: 70px;background-color: #e0e0e0;display: block;  font-size: 13px; padding-bottom: 20px;  color: #000;  text-align: center;  line-height: 25px; }
 div.footer{text-align: center;}
 p.copyright{padding-top: 1em;}
 /* footer end*/

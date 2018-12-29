@@ -1,8 +1,8 @@
+import markdown
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator
 from django.conf import settings
 from django.db.models import Count
-from django.contrib.contenttypes.models import ContentType
 
 from .models import Blog, BlogType
 from read_statistics.utils import read_statistics_once_read
@@ -69,6 +69,11 @@ def blog_detail(request, blog_pk):
     context['previous_blog'] = Blog.objects.filter(created_time__gt=blog.created_time).last()
     context['next_blog'] = Blog.objects.filter(created_time__lt=blog.created_time).first()
     context['blog'] = blog
+    context['content'] = markdown.markdown(blog.content.replace("\r\n", '  \n'), extensions=[
+        'markdown.extensions.extra',
+        'markdown.extensions.codehilite',
+        'markdown.extensions.toc',
+    ],safe_mode=True,enable_attributes=False)
     response = render(request, 'blog/blog_detail.html', context) # 响应
     response.set_cookie(read_cookie_key, 'true') # 阅读cookie标记
     return response

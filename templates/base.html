@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="{% static 'css/font-awesome/css/font-awesome.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
     {% block header_extends %}{% endblock %}
+
+    <script type="text/javascript" src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -143,9 +146,6 @@
       </div>
     </footer>
 
-
-    <script type="text/javascript" src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     {% block script_extends %}{% endblock %}
     <script type="text/javascript">
         $("#login_medal_form").submit(function(event){
