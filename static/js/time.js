@@ -102,11 +102,11 @@ function getCalendar() {
 		this.day = offset + 1;
 	}
 	function YYMMDD() {
-		var cl = '<font color="#009999">';
+		var cl = '<font color="#333">';
 		if (SW == 0)
-			cl = '<font color="#009999">';
+			cl = '<font color="#333">';
 		if (SW == 6)
-			cl = '<font color="#009999">';
+			cl = '<font color="#333">';
 		return (cl + SY + '年' + (SM + 1) + '月' + SD + '日</font>');
 	}
 	function weekday() {
@@ -142,7 +142,7 @@ function getCalendar() {
 	}
 	function lunarTime() {
 		//return ('<font color="#006600">' + cyclical(SY - 4) + '年 ' + cDay(LM, LD) + '</font>');
-		return ('<font color="#009999">' + cDay(LM, LD) + '</font>');
+		return ('<font color="#333">' + cDay(LM, LD) + '</font>');
 	}
 	function specialDate() {
 		var sTermInfo = new Array(0, 21208, 42467, 63836, 85337, 107014,

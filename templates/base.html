@@ -12,11 +12,20 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap3.3.7/css/bootstrap.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/font-awesome/css/font-awesome.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/jqcloud.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
     {% block header_extends %}{% endblock %}
 
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
     <script type="text/javascript" src="{% static 'js/jquery-1.12.4.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/scrollReveal.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jqcloud-1.0.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/time.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/common.js' %}"></script>
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -34,20 +43,20 @@
                     <li class="{% block nav_home_active %}{% endblock %}">
                         <a href="{% url 'home' %}"><i class="fa fa-home"></i>&nbsp;首页</a>
                     </li>
-                    <li class="{% block nav_blog_active %}{% endblock %}">
+                    <li class="{% block nav_article_active %}{% endblock %}">
                         <a href="{% url 'blog_list' %}"><i class="fa fa-book"></i>&nbsp;文章</a>
                     </li>
-                    <li class="">
+                    <li class="{% block nav_tech_active %}{% endblock %}">
                         <a href="{% url 'home' %}"><i class="fa fa-cloud"></i>&nbsp;技术</a>
                     </li>
                     <li class="">
                         <a href="{% url 'home' %}"><i class="fa fa-pencil"></i>&nbsp;随笔</a>
                     </li>
-                    <li class="">
-                        <a href="{% url 'home' %}"><i class="fa fa-calendar"></i>&nbsp;时间轴</a>
+                    <li class="{% block nav_time_active %}{% endblock %}">
+                        <a href="{% url 'time' %}"><i class="fa fa-calendar"></i>&nbsp;时间轴</a>
                     </li>
-                    <li class="">
-                        <a href="{% url 'home' %}"><i class="fa fa-comments"></i>&nbsp;留言</a>
+                    <li class="{% block nav_comment_active %}{% endblock %}">
+                        <a href="{% url 'comment' %}"><i class="fa fa-comments"></i>&nbsp;留言墙</a>
                     </li>
                 </ul>
 
@@ -134,15 +143,15 @@
 
     <!-- footer -->
     <footer class="footer">
-      <div class="container footer">
+      <div class="container">
         <p class="copyright">
-            <a href="javascrpt:void(0);">蜀ICP备18020741号-1</a>
+            <a href="http://www.miitbeian.gov.cn/">蜀ICP备18020741号-1</a>
         </p>
         <p class="link">
-                <a href="/sitemap.xml" target="_blank"><i class="fa fa-sitemap"></i>&nbsp;网站地图</a>
-                <a href="/rss" target="_blank"><i class="fa fa-rss-square"></i>&nbsp;RSS订阅</a>
-            </p>
-            <p class="beian">Copyright © 2018 tengxt.com All Rights Reserved.</p>
+            <a href="/sitemap.xml" target="_blank"><i class="fa fa-sitemap"></i>&nbsp;网站地图</a>
+            <a href="/rss" target="_blank"><i class="fa fa-rss-square"></i>&nbsp;RSS订阅</a>
+        </p>
+        <p class="beian">Copyright © 2018 tengxt All Rights Reserved.</p>
       </div>
     </footer>
 

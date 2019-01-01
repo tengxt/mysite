@@ -1,9 +1,10 @@
 import markdown
 from django.shortcuts import get_object_or_404, render
+from django.contrib.contenttypes.models import ContentType
 from django.core.paginator import Paginator
 from django.conf import settings
 from django.db.models import Count
-
+from read_statistics.utils import get_today_hot_data
 from .models import Blog, BlogType
 from read_statistics.utils import read_statistics_once_read
 
@@ -44,8 +45,10 @@ def get_blog_list_common_data(request, blogs_all_list):
     return context
 
 def blog_list(request):
+    blog_content_type = ContentType.objects.get_for_model(Blog)
     blogs_all_list = Blog.objects.all()
     context = get_blog_list_common_data(request, blogs_all_list)
+    context['today_hot_data'] = get_today_hot_data(blog_content_type)
     return render(request, 'blog/blog_list.html', context)
 
 def blogs_with_type(request, blog_type_pk):

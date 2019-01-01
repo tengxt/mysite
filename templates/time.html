@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}时间轴{% endblock %}
+{% block nav_time_active %}active{% endblock %}
+
+{% load staticfiles %}
+{% load comment_tags %}
+{% load likes_tags %}
+
+{% block header_extends %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{# 页面内容 #}
+{% block content %}
+    <div class="pagebg time"></div>
+    <div class="time_body">
+        <div class="container">
+            <div class="row">
+                <h1 class="t_nav">
+                    <span>时光飞逝，机会就在我们眼前，学会把握机遇。</span>
+                    <a href="{% url 'home' %}" class="n1">网站首页</a>
+                    <a href="{% url 'time' %}" class="n2">时间轴</a>
+                </h1>
+                <div class="col-md-12">
+                    <!-- content start -->
+                    <div class="timebox">
+                        <ul id="list">
+                            {% for blog in blogs %}
+                                <li>
+                                    <span>{{ blog.created_time|date:"Y-m-d" }}</span>
+                                    <a href="{% url 'blog_detail' blog.pk %}" title="{{ blog.title }}">
+                                        {{ blog.title }}
+                                    </a>
+                                </li>
+                            {% empty %}
+                                <h3>暂无文章，敬请期待</h3>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <!-- content end -->
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

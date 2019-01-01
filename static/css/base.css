@@ -1,23 +1,116 @@
 @charset "gb2312";
 /* css */
 * { margin: 0; padding: 0; }
-body { font: 15px "Microsoft YaHei", Arial, Helvetica, sans-serif; color: #555; background-color: #f1f2f3; line-height: 1.5;padding-top: 70px; padding-bottom: 70px;  }
-img { border: 0; display: block }
-ul, li { list-style: none; }
-a { text-decoration: none;color: #555;  }
+body { font: 12px "Microsoft YaHei", Arial, Helvetica, sans-serif; color: #555; background-color: #f1f2f3; line-height: 1.5;  }
+img {
+    height: auto;
+    max-width: 100%;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+ul, li { list-style: none;margin: 0; padding: 0; }
+a { text-decoration: none;color: #555; }
+a:hover{text-decoration: none; color:#337ab7;}
 .clear { clear: both; }
-
-/* header begin */
-nav.header{border-color: #c5c5c5;background-color: #FFF;}
+/* header */
+nav.header{border-color: #c5c5c5;background-color: #FFF;font-size:15px;}
 
 div.user-bar {height: 3em;line-height: 3em;}	
 span.btn-search {vertical-align: middle;color: #099;cursor: pointer;font-size: 110%!important;}
 .btn-login{margin: 0 .5em;color: #099;}
 button.qb_reg {background-color: #10a5a5;color: #fff;width: 60px;padding: 6px 12px!important;cursor: pointer;color: #fff;border: 0;}
-/* header end */
+
+/*bodyer*/
+div.bodyer{margin-top: 80px;}
+
+/*blogsbox*/
+.blogsbox { width: 100%; overflow: hidden; float: left }
+.blogs { overflow: hidden; margin-bottom: 20px; padding: 20px; background: #FFF; -webkit-box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1); -moz-box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1); box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1); -webkit-transition: all 0.6s ease; -moz-transition: all 0.6s ease; -o-transition: all 0.6s ease; transition: all 0.6s ease; }
+.blogs .blogpic { float: left; width: 30%; max-height: 170px; margin-right: 20px; display: block; overflow: hidden; }
+.blogs .blogpic img { width: 100%; height: auto; -webkit-transition: all 0.6s ease; -moz-transition: all 0.6s ease; -o-transition: all 0.6s ease; transition: all 0.6s ease; margin-bottom: 10px }
+.blogs .blogpic :hover img { transform: scale(1.1) }
+.blogs .blogtitle { margin: 0 0 10px 0; font-size: 20px; overflow: hidden; }
+.blogs .blogtitle a:hover { color: #337ab7; }
+.blogs .blogtext { font-size: 14px; color: #566573; overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3; margin-top: 20px }
+.bloginfo { overflow: hidden; margin-top: 30px }
+.bloginfo ul li { float: left; font-size: 12px; padding: 0 0 0 20px; margin: 0 15px 0 0; color: #748594; line-height: 1.5; display: inline-block; }
+.bloginfo ul li a { color: #748594; }
+.bloginfo ul li a:hover { color: #000 }
+
+
+/*sidebar*/
+div.panel {
+	overflow: hidden;
+}
+div.panel-body{
+	padding:0px;
+}
+/* notice */
+div.day_div {
+    display: block;
+    padding: 0 15px 5px 15px;
+}
+div.overView {
+    margin-top: 15px;
+    margin-bottom: 0;
+    color: #999;
+    line-height: 25px;
+}
+p.js_time {
+    margin: 20px 0 5px 0;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+/* hot article */
+.rank {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    text-align: center;
+    color: #999;
+    background: #eee;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    margin-right: 2px;
+}
+.rank1, .rank2, .rank3 {
+    color: #fff;
+    background-color: #f96c6c;
+}
+ul.list-group{
+	margin-bottom: 0px;
+}
+/* link */
+.shiplink {
+    padding-top: 1px;
+}
+.list-unstyled {
+    margin-top: 0;
+    margin-bottom: 10px;
+    padding-left: 0;
+    list-style: none;
+}
+.shiplink li {
+    position: relative;
+    float: left;
+    margin-right: 10px;
+    border-bottom: 0;
+    padding: 5px;
+}
+.shiplink li a {
+    font-size: 14px;
+}
+
+/* user */
+div.containter{
+    margin-top: 80px;
+}
+
 
 /* footer begin*/
-footer{padding-top: 70px;background-color: #e0e0e0;display: block;  font-size: 13px; padding-bottom: 20px;  color: #000;  text-align: center;  line-height: 25px; }
-div.footer{text-align: center;}
+footer{background-color: #e0e0e0;text-align:center;}
 p.copyright{padding-top: 1em;}
-/* footer end*/
