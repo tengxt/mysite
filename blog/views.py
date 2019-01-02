@@ -4,7 +4,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.paginator import Paginator
 from django.conf import settings
 from django.db.models import Count
-from read_statistics.utils import get_today_hot_data
+from read_statistics.utils import get_7_days_hot_blogs
 from .models import Blog, BlogType
 from read_statistics.utils import read_statistics_once_read
 
@@ -48,7 +48,7 @@ def blog_list(request):
     blog_content_type = ContentType.objects.get_for_model(Blog)
     blogs_all_list = Blog.objects.all()
     context = get_blog_list_common_data(request, blogs_all_list)
-    context['today_hot_data'] = get_today_hot_data(blog_content_type)
+    context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
     return render(request, 'blog/blog_list.html', context)
 
 def blogs_with_type(request, blog_type_pk):
@@ -56,12 +56,14 @@ def blogs_with_type(request, blog_type_pk):
     blogs_all_list = Blog.objects.filter(blog_type=blog_type)
     context = get_blog_list_common_data(request, blogs_all_list)
     context['blog_type'] = blog_type
+    context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
     return render(request, 'blog/blogs_with_type.html', context)
 
 def blogs_with_date(request, year, month):
     blogs_all_list = Blog.objects.filter(created_time__year=year, created_time__month=month)
     context = get_blog_list_common_data(request, blogs_all_list)
     context['blogs_with_date'] = '%s年%s月' % (year, month)
+    context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
     return render(request, 'blog/blogs_with_date.html', context)
 
 def blog_detail(request, blog_pk):

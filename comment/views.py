@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.http import JsonResponse
 from .models import Comment
 from .forms import CommentForm
+from read_statistics.utils import get_7_days_hot_blogs
 
 
 def update_comment(request):
@@ -45,3 +46,9 @@ def update_comment(request):
         data['status'] = 'ERROR'
         data['message'] = list(comment_form.errors.values())[0][0]
     return JsonResponse(data)
+
+def comment(request):
+    context = {}
+    context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
+    response = render(request, 'comment/comment.html', context)  # 响应
+    return response

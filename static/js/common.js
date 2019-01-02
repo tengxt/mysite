@@ -9,9 +9,9 @@
     
     // 标签云
     var array = [
-        {text: "标签1", weight: 13, link: "http://jquery.com/"},
-    		{text: "标签2", weight: 10.5},
-    		{text: "日常", weight: 9.4}
+            {text: "python", weight: 13,},
+    		{text: "Django", weight: 10.5},
+    		{text: "Java", weight: 9.4}
       ];
     $("#tag").jQCloud(array, {
         removeOverflowing: true,

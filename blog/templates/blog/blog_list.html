@@ -139,14 +139,12 @@
                         </div>
                         <div class="panel-body">
                             <ul class="list-group">
-                                {% for hot_data in today_hot_data %}
+                                {% for hot_blog in hot_blogs_for_7_days %}
                                     <li class="list-group-item">
                                         <span class="rank rank{{ forloop.counter }}">{{ forloop.counter }}</span>
-                                        <span>
-                                            <a href="{% url 'blog_detail' hot_data.content_object.pk %}" title="{{ hot_data.content_object.title }}">
-                                                {{ hot_data.content_object.title }}
-                                            </a>
-                                        </span>
+                                        <a href="{% url 'blog_detail' hot_blog.id %}" title="{{ hot_blog.title }}">
+                                            {{ hot_blog.title|striptags|truncatechars:24 }}
+                                        </a>
                                     </li>
                                 {% empty %}
                                     <li>暂时没有热门文章</li>

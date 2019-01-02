@@ -64,11 +64,11 @@
                             <div class="day_div">
                                 <div class="overView ">
                                     <img src="{% static 'images/mubiao.jpg' %}" alt="定个小目标" title="定个小目标"/>
-                                    <!--<p>堆大小 = 新生代 + 老年代。默认下，新生代 ( Young ) = 1/3 的堆空间大小，老年代 ( Old ) = 2/3 的堆空间大小；</p>
+                                    {% comment %}<p>堆大小 = 新生代 + 老年代。默认下，新生代 ( Young ) = 1/3 的堆空间大小，老年代 ( Old ) = 2/3 的堆空间大小；</p>
                                     <p>新生代 ( Young ) 被细分为 Eden 和 两个 Survivor 区域，这两个 Survivor 区域分别被命名为 from 和 to，以示区分。默认的，Edem : from : to = 8 : 1 : 1</p>
                                     <p style="text-align:center">
                                         <img src="https://sunjs.oss-cn-beijing.aliyuncs.com/daigou/201809/21/1537496300714.png" title="1537496300712028093.png" alt="061921034534396.png">
-                                    </p>-->
+                                    </p>{% endcomment %}
                                     <p><br></p>
                                 </div>
                                 <p class="js_time"></p>
@@ -82,14 +82,12 @@
                         </div>
                         <div class="panel-body">
                             <ul class="list-group">
-                                {% for hot_data in today_hot_data %}
+                                {% for hot_blog in hot_blogs_for_7_days %}
                                     <li class="list-group-item">
                                         <span class="rank rank{{ forloop.counter }}">{{ forloop.counter }}</span>
-                                        <span>
-                                            <a href="{% url 'blog_detail' hot_data.content_object.pk %}" title="{{ hot_data.content_object.title }}">
-                                                {{ hot_data.content_object.title }}
-                                            </a>
-                                        </span>
+                                        <a href="{% url 'blog_detail' hot_blog.id %}" title="{{ hot_blog.title }}">
+                                            {{ hot_blog.title|striptags|truncatechars:24 }}
+                                        </a>
                                     </li>
                                 {% empty %}
                                     <li>暂时没有热门文章</li>
@@ -115,11 +113,7 @@
                         </div>
                         <div class="panel-body">
                             <ul class="list-unstyled shiplink">
-                                <li><a href="" titile="" target="_blank">个人博客1</a></li>
-                                <li><a href="" titile="" target="_blank">个人博客2</a></li>
-                                <li><a href="" titile="" target="_blank">个人博客3</a></li>
-                                <li><a href="" titile="" target="_blank">个人博客4</a></li>
-                                <li><a href="" titile="" target="_blank">个人博客5</a></li>
+                                <li><a href="//xt998.github.io/" titile="github" target="_blank">xt998.github.io</a></li>
                             </ul>
                         </div>
                     </div>
