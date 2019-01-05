@@ -1,9 +1,31 @@
+/* common css */
+.orther_body{margin: 20px auto;}
+.t_nav{border-bottom: #bfbfbf 1px solid;font-size: 14px;font-weight: normal;line-height: 40px;width: 100%;overflow: hidden;margin-bottom: 20px;}
+.n1 {background: #000;}
+.n2 {background: #3a6ab5;}
+.n1, .n2 {width: 100px;display: block;text-align: center;float: left;color: #fff;}
+.n1:hover, .n2:hover {color: #ffffff;}
+
+
+
+
+
+
 /* blog_list.html */
 div.paginator {
     text-align: center;
 }
 
 
+/* share.html */
+.share { overflow: hidden;padding-top: 10px; padding-bottom: 10px;}
+.shareli { position: relative; margin: 0 15px;padding-bottom: 10px; background: #fff;-webkit-transition: all .3s ease;-moz-transition: all .3s ease;-ms-transition: all .3s ease;-o-transition: all .3s ease;transition: all .3s ease; }
+.shareli a i { height: 200px; display: block; overflow: hidden; }
+.shareli a i img { height: 200px; width: auto; margin: auto; }
+.shareli a h2 { height: 38px; font-size: 14px; line-height: 1.4;  padding: 5px 10px; font-weight: normal;}
+.shareli a h2 b { height: 38px; overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2; font-weight: normal; }
+.shareli a span { display:inline-block; position: absolute; right: 0px; top: 15px; background: rgba(232, 40, 74, .8); color: #FFF; padding: 3px 8px; font-size: 12px; border-radius: 3px; }
+.shareli:hover { transform: translateY(-6px); -webkit-transform: translateY(-6px); -moz-transform: translateY(-6px); }
 /* time.html */
 div.time_body{
 	margin-bottom:50px;
@@ -20,32 +42,6 @@ div.time_body{
     background-position: top center;
 }
 
-h1.t_nav {
-    border-bottom: #bfbfbf 1px solid;
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 40px;
-    width: 100%;
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-h1.t_nav span {
-    float: right;
-    color: #000;
-}
-.n1 {
-    background: #000;
-}
-.n1, .n2 {
-    width: 100px;
-    display: block;
-    text-align: center;
-    float: left;
-    color: #fff;
-}
-.n2 {
-    background: #3a6ab5;
-}
 .timebox {
     position: relative;
     overflow: hidden;

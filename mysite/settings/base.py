@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'comment', #comment
     'likes', # likes
     'user', # user
+    'visits', #visits
 
 ]
 

@@ -15,14 +15,18 @@
 {# 页面内容 #}
 {% block content %}
     <div class="pagebg ab"> </div>
-    <div class="time_body">
+    <div class="orther_body">
         <div class="container">
-            <div class="row">
-                <h1 class="t_nav">
-                    <span>时光飞逝，机会就在我们眼前，学会把握机遇。</span>
+            <div class="row t_nav">
+                <div class="col-md-4">
                     <a href="{% url 'home' %}" class="n1">网站首页</a>
                     <a href="{% url 'comment' %}" class="n2">留言墙</a>
-                </h1>
+                </div>
+                <div class="col-md-8">
+                    <span class="pull-right">时光飞逝，机会就在我们眼前，学会把握机遇。</span>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-9">
                     <!-- content start -->
                     <div class="panel panel-default">
@@ -32,9 +36,20 @@
                                     <i class="fa fa-coffee"></i>&nbsp;&nbsp;博客统计
                                 </div>
                                 <div class="panel-body kcbg_body">
-                                    <p>网站运行：<strong>8&nbsp;(天)</strong></p>
-                                    <p>文章总数：<strong>5&nbsp;(篇)</strong></p>
-                                    <p>总访问次数：<strong>19&nbsp;(次)</strong></p>
+                                    <p>网站运行：<strong id="day">0&nbsp;(天)</strong></p>
+                                    <p>文章总数：<strong>
+                                        {% if blogNumber != 0 %}
+                                            {{ blogNumber }}
+                                        {% else %}
+                                            0
+                                        {% endif %}&nbsp;(篇)</strong></p>
+                                    <p>总访问次数：<strong>
+                                        {% if visitNumber.count != 0 %}
+                                            {{ visitNumber.count }}
+                                        {% else %}
+                                            0
+                                        {% endif %}
+                                        &nbsp;(次)</strong></p>
                                     <p>拦截访问：<strong>0&nbsp;(次)</strong></p>
                                 </div>
                             </div>
@@ -157,7 +172,7 @@
                                         </a>
                                     </li>
                                 {% empty %}
-                                    <li>暂时没有热门文章</li>
+                                    <li class="list-group-item">暂时没有热门文章</li>
                                 {% endfor %}
                             </ul>
                         </div>

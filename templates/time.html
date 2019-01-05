@@ -13,14 +13,18 @@
 {# 页面内容 #}
 {% block content %}
     <div class="pagebg time"></div>
-    <div class="time_body">
+    <div class="orther_body">
         <div class="container">
-            <div class="row">
-                <h1 class="t_nav">
-                    <span>时光飞逝，机会就在我们眼前，学会把握机遇。</span>
+            <div class="row t_nav">
+                <div class="col-md-4">
                     <a href="{% url 'home' %}" class="n1">网站首页</a>
                     <a href="{% url 'time' %}" class="n2">时间轴</a>
-                </h1>
+                </div>
+                <div class="col-md-8">
+                    <span class="pull-right">时光飞逝，机会就在我们眼前，学会把握机遇。</span>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-12">
                     <!-- content start -->
                     <div class="timebox">

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block title %}小涛博客-资源分享{% endblock %}
+{% block nav_share_active %}active{% endblock %}
+
+{% load staticfiles %}
+{% load comment_tags %}
+{% load likes_tags %}
+
+{% block header_extends %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{# 页面内容 #}
+{% block content %}
+    <div class="pagebg time"></div>
+    <div class="orther_body">
+        <div class="container">
+            <div class="row t_nav">
+                <div class="col-md-4">
+                    <a href="{% url 'home' %}" class="n1">网站首页</a>
+                    <a href="{% url 'time' %}" class="n2">资源分享</a>
+                </div>
+                <div class="col-md-8">
+                    <span class="pull-right">好咖啡要和朋友一起品尝，好“资源”也要和同样喜欢它的人一起分享。 </span>
+                </div>
+            </div>
+            <!-- content start -->
+            <div class="row">
+                <div class="col-md-3 share">
+                    <div class="shareli">
+                        <a href="/" target="_blank"> <i><img src="{% static 'images/toppic01.jpg' %}"></i>
+                            <h2><b>别让这些闹心的套路，毁了你的网页设计!</b></h2>
+                            <span>喜欢 | 190</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 share">
+                    <div class="shareli">
+                        <a href="/" target="_blank"> <i><img src="{% static 'images/toppic01.jpg' %}"></i>
+                            <h2><b>别让这些闹心的套路，毁了你的网页设计!</b></h2>
+                            <span>喜欢 | 190</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 share">
+                    <div class="shareli">
+                        <a href="/" target="_blank"> <i><img src="{% static 'images/toppic01.jpg' %}"></i>
+                            <h2><b>别让这些闹心的套路，毁了你的网页设计!</b></h2>
+                            <span>喜欢 | 190</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 share">
+                    <div class="shareli">
+                        <a href="/" target="_blank"> <i><img src="{% static 'images/toppic01.jpg' %}"></i>
+                            <h2><b>别让这些闹心的套路，毁了你的网页设计!</b></h2>
+                            <span>喜欢 | 190</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 share">
+                    <div class="shareli">
+                        <a href="/" target="_blank"> <i><img src="{% static 'images/toppic01.jpg' %}"></i>
+                            <h2><b>别让这些闹心的套路，毁了你的网页设计!</b></h2>
+                            <span>喜欢 | 190</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 share">
+                    <div class="shareli">
+                        <a href="/" target="_blank"> <i><img src="{% static 'images/toppic01.jpg' %}"></i>
+                            <h2><b>别让这些闹心的套路，毁了你的网页设计!</b></h2>
+                            <span>喜欢 | 190</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3 share">
+                    <div class="shareli">
+                        <a href="/" target="_blank"> <i><img src="{% static 'images/toppic01.jpg' %}"></i>
+                            <h2><b>别让这些闹心的套路，毁了你的网页设计!</b></h2>
+                            <span>喜欢 | 190</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- content end -->
+        </div>
+    </div>
+    </div>
+{% endblock %}

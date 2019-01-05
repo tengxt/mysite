@@ -8,14 +8,13 @@
     <meta name="baidu-site-verification" content="5CPePy4Wzm" />
     <meta name="google-site-verification" content="zkjrc3qqtupICf2tce2uvQTK3ZMrY6BjTNfwRsQqDyo" />
     <meta name="description" content="小涛博客，是一个记录技术心得和资源分享，记录生活点滴，分享兴趣爱好的个人博客。">
-    <meta name="keywords" content="小涛博客,tengxiaotao,个人博客,原创博客,资源下载,IT技术分享">
+    <meta name="keywords" content="小涛博客,个人博客,原创博客,资源下载,IT技术分享">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap3.3.7/css/bootstrap.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/font-awesome/css/font-awesome.min.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/jqcloud.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
     {% block header_extends %}{% endblock %}
-
     <!--[if lt IE 9]>
       <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
@@ -46,11 +45,11 @@
                     <li class="{% block nav_article_active %}{% endblock %}">
                         <a href="{% url 'blog_list' %}"><i class="fa fa-book"></i>&nbsp;文章</a>
                     </li>
-                    <li class="{% block nav_tech_active %}{% endblock %}">
-                        <a href="{% url 'home' %}"><i class="fa fa-cloud"></i>&nbsp;技术</a>
-                    </li>
-                    <li class="">
-                        <a href="{% url 'home' %}"><i class="fa fa-pencil"></i>&nbsp;随笔</a>
+                    {% comment %}<li class="{% block nav_tech_active %}{% endblock %}">
+                        <a href="{% url 'home' %}"><i class="fa fa-code"></i>&nbsp;技术</a>
+                    </li>{% endcomment %}
+                    <li class="{% block nav_share_active %}{% endblock %}">
+                        <a href="{% url 'share' %}"><i class="fa fa-cloud-download"></i>&nbsp;资源分享</a>
                     </li>
                     <li class="{% block nav_time_active %}{% endblock %}">
                         <a href="{% url 'time' %}"><i class="fa fa-calendar"></i>&nbsp;时间轴</a>
@@ -111,8 +110,6 @@
 
     {% block content %}{% endblock %}
 
-
-
     <!-- Modal -->
     <div class="modal fade" id="login_modal" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-sm" role="document">
@@ -154,7 +151,7 @@
         <p class="beian">Copyright © 2018 tengxt All Rights Reserved.</p>
       </div>
     </footer>
-
+    <a href="javascript:void(0);" class="cd-top cd-fade-out"></a>
     {% block script_extends %}{% endblock %}
     <script type="text/javascript">
         $("#login_medal_form").submit(function(event){
