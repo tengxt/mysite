@@ -27,7 +27,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',  # ckeditor
     'ckeditor_uploader',  # ckeditor_uploader
-    'mdeditor', # mdeditor
 	'blog', # blog app
     'read_statistics', # read_statistics
     'comment', #comment
@@ -116,13 +115,29 @@ STATICFILES_DIRS = [
 
 # media
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'mdeditor')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # 配置cheditor
 CKEDITOR_UPLOAD_PATH = 'upload/'
 
 CKEDITOR_CONFIGS = {
-    'default': {},
+    'default': {
+        'toolbar': (['div', 'Source', '-', 'Save', 'NewPage', 'Preview', '-', 'Templates'],
+                    ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
+                    ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat', '-', 'Maximize',
+                     'ShowBlocks', '-', 'Subscript', 'Superscript', "CodeSnippet"],  # 添加"CodeSnippet"到toolbar中
+                    ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton',
+                     'HiddenField'],
+                    ['Bold', 'Italic', 'Underline', 'Strike', '-'],
+                    ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote'],
+                    ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+                    ['Link', 'Unlink', 'Anchor'],
+                    ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak'],
+                    ['Styles', 'Format', 'Font', 'FontSize'],
+                    ['TextColor', 'BGColor'],
+                    ),
+                'extraPlugins': 'codesnippet',    # 此处需要添加
+    },
     'comment_ckeditor' :{
         'toolbar' : 'custom',
         'toolbar_custom': [
