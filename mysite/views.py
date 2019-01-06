@@ -9,7 +9,7 @@ def home(request):
     change_info(request)
     context = {}
     context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
-    context['get_article_all'] = Blog.objects.all()[:10]
+    context['get_article_all'] = Blog.objects.order_by('-created_time')[:10]
     return render(request, 'home.html', context)
 
 @cache_page(60*10)

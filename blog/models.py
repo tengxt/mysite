@@ -29,6 +29,7 @@ class Blog(models.Model, ReadNumExpandMethod):
     title = models.CharField(verbose_name='文章标题', max_length=50)
     blog_type = models.ForeignKey(BlogType, on_delete=models.CASCADE)
     blog_tag = models.ForeignKey(BlogTag, on_delete=models.CASCADE)
+    picture = models.CharField(verbose_name='文章缩略图', max_length=500)
     content = RichTextUploadingField(verbose_name='文章内容')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     read_details = GenericRelation(ReadDetail)

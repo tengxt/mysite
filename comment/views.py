@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from .models import Comment
 from .forms import CommentForm
 from read_statistics.utils import get_7_days_hot_blogs
+from django.db.models import Sum
 from visits.models import *
 from blog.models import *
 
@@ -51,7 +52,8 @@ def update_comment(request):
 
 def comment(request):
     context = {}
-    context['visitNumber'] = VisitNumber.objects.all()
+    visitNumber = VisitNumber.objects.aggregate(nums=Sum('count'))
+    context['visitNumber'] =visitNumber['nums']
     context['blogNumber'] = Blog.objects.count()
     context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
     response = render(request, 'comment/comment.html', context)  # 响应

@@ -25,7 +25,7 @@
                                 </h3>
                                 <span class="blogpic"><a href="{% url 'blog_detail' blog.pk %}"
                                                          title="{{ blog.title }}"><img
-                                        src="{% static 'images/toppic01.jpg' %}" alt=""></a></span>
+                                        src="{{ blog.picture }}" alt="{{ blog.title }}"></a></span>
                                 <p class="blogtext">{{ blog.content|striptags|truncatechars:120 }}</p>
                                 <div class="bloginfo">
                                     <ul>

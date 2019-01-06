@@ -37,6 +37,10 @@ div.bodyer{margin-top: 80px;}
 .bloginfo ul li { float: left; font-size: 12px; padding: 0 0 0 20px; margin: 0 15px 0 0; color: #748594; line-height: 1.5; display: inline-block; }
 .bloginfo ul li a { color: #748594; }
 .bloginfo ul li a:hover { color: #000 }
+/*bigpic*/
+.bigpic { overflow: hidden; width: 100%; display: block; margin-bottom: 20px; background: #000 }
+.bigpic img { width: 100%; -webkit-transition: all 0.6s ease; -moz-transition: all 0.6s ease; -o-transition: all 0.6s ease; -ms-transition: all 0.6s ease; transition: all 0.6s ease; }
+.bigpic:hover img { opacity: 0.8 }
 
 
 /*sidebar*/
