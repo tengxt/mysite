@@ -27,7 +27,7 @@
                                 </h3>
                                 <span class="bigpic"><a href="{% url 'blog_detail' blog.pk %}" title="{{ blog.title }}"><img
                                         src="{{ blog.picture }}" alt="{{ blog.title }}"></a></span>
-                                <p class="blogtext">{{ blog.content|striptags|truncatechars:120 }}</p>
+                                <p class="blogtext">{{ blog.content|striptags|truncatechars:200 }}</p>
                                 <div class="bloginfo">
                                     <ul>
                                         <li class="author"><a href="/"><i class="fa fa-user-circle"></i>&nbsp;小涛</a>
