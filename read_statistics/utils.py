@@ -3,8 +3,8 @@ from django.contrib.contenttypes.models import ContentType
 from django.utils import timezone
 from django.db.models import Sum
 from django.core.cache import cache
-from .models import ReadNum, ReadDetail
 from blog.models import Blog
+from .models import ReadNum, ReadDetail
 
 
 def read_statistics_once_read(request, obj):

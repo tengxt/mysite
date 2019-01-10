@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}留言墙{% endblock %}
+{% block title %}小涛博客 - 留言墙{% endblock %}
 {% block nav_comment_active %}active{% endblock %}
 
 {% load staticfiles %}
@@ -178,16 +178,29 @@
                         </div>
                     </div>
 
-                    <!-- hot tag -->
-                    <div class="panel panel-default">
+                    {% comment %}<!-- hot tag -->
+                    <div class="panel panel-default cloud">
                         <div class="panel-heading">
                             <span class="panel-title"><i class="fa fa-tags"></i>&nbsp;热门标签</span>
                         </div>
                         <div class="panel-body">
-                            <div id="tag"></div>
+                            <ul class="tag">
+                                <a href="/">陌上花开</a>
+                                <a href="/">校园生活</a>
+                                <a href="/">html5</a>
+                                <a href="/">SumSung</a>
+                                <a href="/">青春</a>
+                                <a href="/">温暖</a>
+                                <a href="/">阳光</a>
+                                <a href="/">三星</a>
+                                <a href="/">索尼</a>
+                                <a href="/">华维荣耀</a>
+                                <a href="/">三星</a>
+                                <a href="/">索尼</a>
+                            </ul>
                         </div>
                     </div>
-                </div>
+                </div>{% endcomment %}
             </div>
         </div>
     </div>

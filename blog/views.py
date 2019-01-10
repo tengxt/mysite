@@ -1,11 +1,11 @@
-import markdown
+import random
 from django.shortcuts import get_object_or_404, render
 from django.contrib.contenttypes.models import ContentType
 from django.core.paginator import Paginator
 from django.conf import settings
 from django.db.models import Count
 from read_statistics.utils import get_7_days_hot_blogs
-from .models import Blog, BlogType
+from .models import Blog, BlogType, BlogTag
 from read_statistics.utils import read_statistics_once_read
 
 
@@ -41,6 +41,7 @@ def get_blog_list_common_data(request, blogs_all_list):
     context['page_of_blogs'] = page_of_blogs
     context['page_range'] = page_range
     context['blog_types'] = BlogType.objects.annotate(blog_count=Count('blog'))
+    context['blog_tags'] = BlogTag.objects.annotate(blog_count=Count('blog'))
     context['blog_dates'] = blog_dates_dict
     return context
 
@@ -58,6 +59,15 @@ def blogs_with_type(request, blog_type_pk):
     context['blog_type'] = blog_type
     context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
     return render(request, 'blog/blogs_with_type.html', context)
+
+def blogs_with_tag(request, blog_tag_pk):
+    blog_tag = get_object_or_404(BlogTag, pk=blog_tag_pk)
+    blogs_all_list = Blog.objects.filter(blog_tag=blog_tag)
+    context = get_blog_list_common_data(request, blogs_all_list)
+    context['blog_tag'] = blog_tag
+    context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
+    return render(request, 'blog/blogs_with_tag.html', context)
+
 
 def blogs_with_date(request, year, month):
     blogs_all_list = Blog.objects.filter(created_time__year=year, created_time__month=month)
