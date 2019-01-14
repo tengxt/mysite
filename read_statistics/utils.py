@@ -1,4 +1,5 @@
 import datetime
+import random
 from django.contrib.contenttypes.models import ContentType
 from django.utils import timezone
 from django.db.models import Sum
@@ -48,18 +49,17 @@ def get_yesterday_hot_data(content_type):
     read_details = ReadDetail.objects.filter(content_type=content_type, date=yesterday).order_by('-read_num')
     return read_details[:7]
 
-# 获取7天内的热门文章并加入缓存
 def get_7_days_hot_blogs():
     today = timezone.now().date()
     date = today - datetime.timedelta(days=7)
-    # 现获取缓存中的数据，如果为空则进行查询；反之则用缓存数据
-    hot_blogs_for_7_days = cache.get('hot_blogs_for_7_days')
-    if hot_blogs_for_7_days is None:
-        blogs = Blog.objects \
+    hot_blogs_key = 'hot_blogs_key'
+    if cache.has_key(hot_blogs_key):
+        hot_blogs_val = cache.get(hot_blogs_key)
+    else:
+        hot_blogs_val = Blog.objects \
             .filter(read_details__date__lt=today, read_details__date__gte=date) \
             .values('id', 'title') \
             .annotate(read_num_sum=Sum('read_details__read_num')) \
-            .order_by('-read_num_sum')
-        # 根据阅读量取7条热门文章
-        cache.set('hot_blogs_for_7_days', blogs[:7], 3600)
-    return hot_blogs_for_7_days
+            .order_by('-read_num_sum')[:7]
+        cache.set(hot_blogs_key, hot_blogs_val, 3600)
+    return hot_blogs_val
