@@ -7,42 +7,20 @@
     小涛博客 - 是一个记录技术心得和资源分享的个人博客
 {% endblock %}
 
-{% block header_extends %}
-
-{% endblock %}
+{% block header_extends %}{% endblock %}
 
 {% block nav_home_active %}active{% endblock %}
 
 {% block content %}
-    <div class="bodyer">
+    <div class="orther_body">
         <div class="container">
             <div class="row">
-                <div class="col-md-9">
-                    <div id="myCarousel" class="carousel slide">
-                        <!-- 轮播（Carousel）指标 -->
-                        <ol class="carousel-indicators">
-                            <li data-target="#myCarousel" data-slide-to="0"
-                                class="active"></li>
-                            <li data-target="#myCarousel" data-slide-to="1"></li>
-                            <li data-target="#myCarousel" data-slide-to="2"></li>
-                        </ol>
-                        <!-- 轮播（Carousel）项目 -->
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <img src="https://wx2.sinaimg.cn/large/006eb3sJly1fyyg0ndxv7j33402c0b29.jpg" alt="First slide">
-                            </div>
-                            <div class="item">
-                                <img src="https://wx3.sinaimg.cn/large/006eb3sJgy1fyzkx6ob00j33uw2klb2g.jpg" alt="Second slide">
-                            </div>
-                            <div class="item">
-                                <img src="https://wx2.sinaimg.cn/large/006eb3sJgy1fyzlfcg4mvj33002004qu.jpg" alt="Third slide">
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
                     <!-- content start -->
                     <div class="blogsbox">
                         {% for blog in get_article_all %}
-                            <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+                            {% comment %}<div class="blogs" data-scroll-reveal="enter bottom over 1s">
                                 <h3 class="blogtitle">
                                     <a href="{% url 'blog_detail' blog.pk %}" target="_blank">{{ blog.title }}</a>
                                 </h3>
@@ -66,7 +44,27 @@
                                                 class="fa fa-comments"></i>&nbsp;{% get_comment_count blog %}</li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div>{% endcomment %}
+                         <article>
+                            <a href="{% url 'blog_detail' blog.pk %}">
+                                <div class="post-card" id="post-card-{{ blog.pk }}">
+                                    <div class="blog-background" style="background-image: url({{ blog.picture }})"></div>
+                                    <div class="lazyload-container"></div>
+                                    <img src="" style="display: none" onload="javascript:loadBanner(this, '{{ blog.picture }}', '', document.querySelector('#post-card-{{ blog.pk }}'), '-1', document.querySelector('#post-card-1952').offsetWidth, document.querySelector('#post-card-{{ blog.pk }}').offsetHeight)">
+
+                                    <div class="post-card-mask">
+                                        <div class="post-card-container">
+                                            <h2 class="post-card-title" itemprop="headline"><span style="color:red"></span>{{ blog.title }}</h2>
+                                            <div class="post-card-info">
+                                                                <span itemprop="author" itemscope="">时间：{{ blog.created_time|date:"Y-m-d" }}</span>
+                                                <span class="label"><span class="biao">标签：{{ blog.blog_tag }}</span></span>
+                                                <span class="label">阅读：{{ blog.get_read_num }} </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </article>
                         {% empty %}
                             <div class="blog">
                                 <h3>暂无文章，敬请期待</h3>
@@ -75,84 +73,21 @@
                     </div>
                     <!-- content end -->
                 </div>
-                <div class="col-md-3">
-                    <!-- notice -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <span class="panel-title"><i class="fa fa-snowflake-o"></i>&nbsp;赏析</span>
-                        </div>
-                        <div class="panel-body">
-                            <div class="day_div">
-                                <div class="overView ">
-                                    <img src="{% static 'images/mubiao.jpg' %}" alt="定个小目标" title="定个小目标"/>
-                                    {% comment %}<p>堆大小 = 新生代 + 老年代。默认下，新生代 ( Young ) = 1/3 的堆空间大小，老年代 ( Old ) = 2/3 的堆空间大小；</p>
-                                    <p>新生代 ( Young ) 被细分为 Eden 和 两个 Survivor 区域，这两个 Survivor 区域分别被命名为 from 和 to，以示区分。默认的，Edem : from : to = 8 : 1 : 1</p>
-                                    <p style="text-align:center">
-                                        <img src="https://sunjs.oss-cn-beijing.aliyuncs.com/daigou/201809/21/1537496300714.png" title="1537496300712028093.png" alt="061921034534396.png">
-                                    </p>{% endcomment %}
-                                    <p><br></p>
-                                </div>
-                                <p class="js_time"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- hot article -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <span class="panel-title"><i class="fa fa-book"></i>&nbsp;热门文章</span>
-                        </div>
-                        <div class="panel-body">
-                            <ul class="list-group">
-                                {% for hot_blog in hot_blogs_for_7_days %}
-                                    <li class="list-group-item">
-                                        <span class="rank rank{{ forloop.counter }}">{{ forloop.counter }}</span>
-                                        <a href="{% url 'blog_detail' hot_blog.id %}" title="{{ hot_blog.title }}">
-                                            {{ hot_blog.title|striptags|truncatechars:24 }}
-                                        </a>
-                                    </li>
-                                {% empty %}
-                                    <li>暂时没有热门文章</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
-                    {% comment %}
-                    <!-- hot tag -->
-                    <div class="panel panel-default cloud">
-                        <div class="panel-heading">
-                            <span class="panel-title"><i class="fa fa-tags"></i>&nbsp;热门标签</span>
-                        </div>
-                        <div class="panel-body">
-                            <ul class="tag">
-                                <a href="/">陌上花开</a>
-                                <a href="/">校园生活</a>
-                                <a href="/">html5</a>
-                                <a href="/">SumSung</a>
-                                <a href="/">青春</a>
-                                <a href="/">温暖</a>
-                                <a href="/">阳光</a>
-                                <a href="/">三星</a>
-                                <a href="/">索尼</a>
-                                <a href="/">华维荣耀</a>
-                                <a href="/">三星</a>
-                                <a href="/">索尼</a>
-                            </ul>
-                        </div>
-                    </div>{% endcomment %}
-
-                    <!-- links -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <span class="panel-title"><i class="fa fa-link"></i>&nbsp;友情链接</span>
-                        </div>
-                        <div class="panel-body">
-                            <ul class="list-unstyled shiplink">
-                                <li><a href="//xt998.github.io/" titile="github" target="_blank">xt998.github.io</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <div class="col-md-1"></div>
             </div>
         </div>
     </div>
 {% endblock %}
+
+<script type="text/javascript">
+        {% comment %}(function ($) {
+            hljs.initHighlightingOnLoad();
+        })(jQuery);{% endcomment %}
+        //图片查看
+        document.addEventListener('DOMContentLoaded', function () {
+            const zooming = new Zooming({
+                customSize: '30%'
+            });
+            zooming.listen('img');
+        })
+</script>

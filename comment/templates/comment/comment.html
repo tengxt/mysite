@@ -14,7 +14,6 @@
 
 {# 页面内容 #}
 {% block content %}
-    <div class="pagebg ab"> </div>
     <div class="orther_body">
         <div class="container">
             <div class="row t_nav">
@@ -157,6 +156,17 @@
                 </div>{% endcomment %}
                 </div>
                 <div class="col-md-3">
+                    <!-- about -->
+                    <div class="panel panel-default">
+                        <div class="panel-body sidebar">
+                            <div class="about">
+                              <p class="avatar"> <img src="{% static 'images/header.jpg' %}" alt=""> </p>
+                              <p class="abname">滕小涛</p>
+                              <p class="abposition">搬砖工、泥瓦匠</p>
+                              <p class="abtext">联系方式：1300230407@qq.com|联系方式：1300230407@qq.com|联系方式：1300230407@qq.com|联系方式：1300230407@qq.com</p>
+                            </div>
+                        </div>
+                    </div>
                     <!-- hot article -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -177,30 +187,6 @@
                             </ul>
                         </div>
                     </div>
-
-                    {% comment %}<!-- hot tag -->
-                    <div class="panel panel-default cloud">
-                        <div class="panel-heading">
-                            <span class="panel-title"><i class="fa fa-tags"></i>&nbsp;热门标签</span>
-                        </div>
-                        <div class="panel-body">
-                            <ul class="tag">
-                                <a href="/">陌上花开</a>
-                                <a href="/">校园生活</a>
-                                <a href="/">html5</a>
-                                <a href="/">SumSung</a>
-                                <a href="/">青春</a>
-                                <a href="/">温暖</a>
-                                <a href="/">阳光</a>
-                                <a href="/">三星</a>
-                                <a href="/">索尼</a>
-                                <a href="/">华维荣耀</a>
-                                <a href="/">三星</a>
-                                <a href="/">索尼</a>
-                            </ul>
-                        </div>
-                    </div>
-                </div>{% endcomment %}
             </div>
         </div>
     </div>

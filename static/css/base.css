@@ -1,7 +1,14 @@
 @charset "gb2312";
 /* css */
 * { margin: 0; padding: 0; }
-body { font: 12px "Microsoft YaHei", Arial, Helvetica, sans-serif; color: #555; background-color: #f1f2f3; line-height: 1.5;  }
+body {
+    font-family: "Microsoft YaHei";
+    color: #555;
+    background-color: #f1f2f3;
+    line-height: 1.5;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%
+}
 img {
     height: auto;
     max-width: 100%;
@@ -20,15 +27,188 @@ span.btn-search {vertical-align: middle;color: #099;cursor: pointer;font-size: 1
 .btn-login{margin: 0 .5em;color: #099;}
 button.qb_reg {background-color: #10a5a5;color: #fff;width: 60px;padding: 6px 12px!important;cursor: pointer;color: #fff;border: 0;}
 
-/*bodyer*/
-div.bodyer{margin-top: 80px;}
-#myCarousel{margin: 0px auto 20px auto;}
-.item img{width: 100%;max-height: 400px;}
+/* Ëæ»ú±³¾°Í¼ */
+.orther_body{
+    margin: 20px auto;
+}
+.page {
+    margin-top: 50px;
+    padding: 100px 0;
+    text-align: center;
+    width: 100%;
+}
+.bg {
+    background: url(../images/page_time.jpg) no-repeat;
+    background-size: cover;
+    background-position: top center;
+}
+.t_nav{
+    border-bottom: #bfbfbf 1px solid;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 40px;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.n1 {
+    background: #000;
+}
+.n2 {
+    background: #3a6ab5;
+}
+.n1, .n2 {
+    width: 100px;
+    display: block;
+    text-align: center;
+    float: left;
+    color: #fff;
+}
+.n1:hover, .n2:hover {
+    color: #ffffff;
+}
+article{
+    padding: 2rem 0 1.25rem;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    background: 0;
+}
+.side-box{
+    margin: 2rem 0 1.25rem;
+}
+.post-card{
+    border-radius: .3125rem;
+    overflow: hidden;
+    background: #fff no-repeat center;
+    background-size: cover;
+    position: relative;
+    -webkit-transition: .3s ease all;
+    -moz-transition: .3s ease all;
+    -ms-transition: .3s ease all;
+    -o-transition: .3s ease all;
+    transition: .3s ease all;
+}
+.post-card {
+    text-decoration: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-box-shadow: 0 .0625rem .0625rem rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 .0625rem .0625rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 .0625rem .0625rem rgba(0, 0, 0, 0.1);
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -ms-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s
+}
+
+.blog-background {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    opacity: 1;
+    -webkit-transition: 1s ease opacity;
+    -moz-transition: 1s ease opacity;
+    -ms-transition: 1s ease opacity;
+    -o-transition: 1s ease opacity;
+    transition: 1s ease opacity;
+}
+.lazyload-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    background: #333;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: normal;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    overflow: hidden;
+    -webkit-filter: blur(35px);
+    -moz-filter: blur(35px);
+    -o-filter: blur(35px);
+    filter: blur(35px);
+    -ms-filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=35, MakeShadow=false);
+    -webkit-transition: 1s ease opacity;
+    -moz-transition: 1s ease opacity;
+    -ms-transition: 1s ease opacity;
+    -o-transition: 1s ease opacity;
+    transition: 1s ease opacity;
+}
+.post-card-mask{
+    background: rgba(0, 0, 0, 0.25);
+    position: relative;
+    z-index: 10;
+    display: table;
+    vertical-align: middle;
+    width: 100%;
+    height: 18.5rem;
+}
+.post-card-container{
+    padding: 2rem 2rem;
+    text-align: center;
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+.post-card-title{
+    font-size: 2.5625rem;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+.post-card-info{
+    color: #eee;
+    font-size: .875rem;
+    text-align: center;
+    font-weight: 400;
+}
+.post-card:hover, .post-card:focus {
+    -webkit-box-shadow: 0 22px 43px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0 22px 43px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 22px 43px rgba(0, 0, 0, 0.15);
+    -webkit-transform: translateY(-4px) scale(1.05);
+    -moz-transform: translateY(-4px) scale(1.05);
+    -ms-transform: translateY(-4px) scale(1.05);
+    -o-transform: translateY(-4px) scale(1.05);
+    transform: translateY(-4px) scale(1.05)
+}
+
 
 
 /*blogsbox*/
-.blogsbox { width: 100%; overflow: hidden; float: left }
-.blogs { overflow: hidden; margin-bottom: 20px; padding: 20px; background: #FFF; -webkit-box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1); -moz-box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1); box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1); -webkit-transition: all 0.6s ease; -moz-transition: all 0.6s ease; -o-transition: all 0.6s ease; transition: all 0.6s ease; }
+.blogs {
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #FFF;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1);
+    -moz-box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1);
+    box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1);
+    -webkit-transition: all 0.6s ease;
+    -moz-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+    transition: all 0.6s ease; 
+}
 .blogs .blogpic { float: left; width: 30%; max-height: 170px; margin-right: 20px; display: block; overflow: hidden; }
 .blogs .blogpic img { width: 100%; height: auto; -webkit-transition: all 0.6s ease; -moz-transition: all 0.6s ease; -o-transition: all 0.6s ease; transition: all 0.6s ease; margin-bottom: 10px }
 .blogs .blogpic :hover img { transform: scale(1.1) }

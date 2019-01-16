@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.fields import GenericRelation
-from ckeditor_uploader.fields import RichTextUploadingField
 from django.urls import reverse
 from read_statistics.models import ReadNumExpandMethod, ReadDetail
 
@@ -30,7 +29,7 @@ class Blog(models.Model, ReadNumExpandMethod):
     blog_type = models.ForeignKey(BlogType, on_delete=models.CASCADE)
     blog_tag = models.ForeignKey(BlogTag, on_delete=models.CASCADE)
     picture = models.CharField(verbose_name='文章缩略图', max_length=500)
-    content = RichTextUploadingField(verbose_name='文章内容')
+    content = models.TextField(verbose_name='文章内容')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     read_details = GenericRelation(ReadDetail)
     created_time = models.DateTimeField(verbose_name='创建时间', auto_now_add=True)

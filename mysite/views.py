@@ -18,14 +18,14 @@ def home(request):
     context['get_article_all'] = blogs_val
     return render(request, 'home.html', context)
 
-@cache_page(60*15)
+#@cache_page(60*15)
 def time(request):
     change_info(request)
     context = {}
     context['blogs'] = Blog.objects.all()[:10]
     return render(request, 'time.html', context)
 
-@cache_page(60*15)
+#@cache_page(60*15)
 def share(request):
     change_info(request)
     context={}

@@ -1,11 +1,15 @@
 ﻿$(document).ready(function () {
-    //轮播初始化
-    $("#myCarousel").carousel('cycle');
+    //images views
+    document.addEventListener('DOMContentLoaded', function () {
+        const zooming = new Zooming({
+            customSize: '30%'
+        });
+        zooming.listen('img');
+    });
 	
-    //检测ie 6789
-    if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))) {
-        window.scrollReveal = new scrollReveal({reset: true});
-    }
+    //scrollReveal animate
+    window.scrollReveal = new scrollReveal({reset: true});
+
     //回到顶部
     // browser window scroll (in pixels) after which the "back to top" link is shown
     var offset = 400,

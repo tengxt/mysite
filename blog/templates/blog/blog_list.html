@@ -12,8 +12,17 @@
 
 {# 页面内容 #}
 {% block content %}
-    <div class="bodyer">
+    <div class="orther_body">
         <div class="container">
+            <div class="row t_nav">
+                <div class="col-md-4">
+                    <a href="{% url 'home' %}" class="n1">网站首页</a>
+                    <a href="{% url 'blog_list' %}" class="n2">文章列表</a>
+                </div>
+                <div class="col-md-8">
+                    <span class="pull-right">时光飞逝，机会就在我们眼前，学会把握机遇。</span>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-9">
                     <!-- content start -->
@@ -26,7 +35,8 @@
                                 <span class="blogpic"><a href="{% url 'blog_detail' blog.pk %}"
                                                          title="{{ blog.title }}"><img
                                         src="{{ blog.picture }}" alt="{{ blog.title }}"></a></span>
-                                <p class="blogtext">{{ blog.content|striptags|truncatechars:150 }}</p>
+                                <p class="blogtext"><a href="{% url 'blog_detail' blog.pk %}"
+                                                         title="{{ blog.title }}">{{ blog.content|striptags|truncatechars:150 }}</a></p>
                                 <div class="bloginfo">
                                     <ul>
                                         <li class="author"><a href="/"><i class="fa fa-user-circle"></i>&nbsp;小涛</a>
@@ -96,6 +106,26 @@
                     </div>
                 </div>
                 <div class="col-md-3">
+                    <!-- notice -->
+                    <div class="panel panel-default side-box">
+                        <div class="panel-heading">
+                            <span class="panel-title"><i class="fa fa-snowflake-o"></i>&nbsp;赏析</span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="day_div">
+                                <div class="overView ">
+                                    {% comment %}<img src="{% static 'images/mubiao.jpg' %}" alt="定个小目标" title="定个小目标"/>{% endcomment %}
+                                    <p>堆大小 = 新生代 + 老年代。默认下，新生代 ( Young ) = 1/3 的堆空间大小，老年代 ( Old ) = 2/3 的堆空间大小；</p>
+                                    <p>新生代 ( Young ) 被细分为 Eden 和 两个 Survivor 区域，这两个 Survivor 区域分别被命名为 from 和 to，以示区分。默认的，Edem : from : to = 8 : 1 : 1</p>
+                                    <p style="text-align:center">
+                                        <img src="https://sunjs.oss-cn-beijing.aliyuncs.com/daigou/201809/21/1537496300714.png" title="1537496300712028093.png" alt="061921034534396.png">
+                                    </p>
+                                    <p><br></p>
+                                </div>
+                                <p class="js_time"></p>
+                            </div>
+                        </div>
+                    </div>
                     <!-- article type -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -167,6 +197,17 @@
                                 {% empty %}
                                     <li>暂无标签</li>
                                 {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- links -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span class="panel-title"><i class="fa fa-link"></i>&nbsp;友情链接</span>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled shiplink">
+                                <li><a href="//xt998.github.io/" titile="github" target="_blank">xt998.github.io</a></li>
                             </ul>
                         </div>
                     </div>

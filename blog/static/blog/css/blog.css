@@ -1,14 +1,33 @@
+.white{
+    background: #FFF;
+}
+.news{
+    padding: 0 30px;
+}
+.news .title{
+    font-size: 24px;
+    font-weight: normal;
+    padding: 30px 0 0 0;
+    color: #333;
+}
+.news .info{
+    margin-top: 30px;
+}
+
 ul.blog-info-description {
     list-style-type: none;
-    margin-bottom: 1em;
 }
 ul.blog-info-description li{
     display: inline-block;
-    margin-right: 1em;
+    font-size: 12px;
+    padding: 0 0 0 20px;
+    color: #748594;
+    line-height: 1.5;
 }
 div.blog-content{
-    text-indent: 2em;
-    margin-bottom: 2em;
+    line-height: 1.8;
+    font-size: 16px;
+    text-align: justify;
 }
 div.blog-more {
     margin-top: 1em;
