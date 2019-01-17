@@ -1,5 +1,35 @@
 /* common css */
 
+div.comment-area {
+    margin-top: 2rem;
+}
+.comment-area-title {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.4rem;
+    color: #000000;
+}
+.jubao{
+    float: right;
+}
+.nickname{
+    padding: 1rem;
+}
+.comt-area {
+    padding: 5px 5px 5px 10px;
+    width: 100%;
+    height: 120px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    line-height: 180%;
+    resize: none;
+    border-radius: 0 0 4px 4px!important;
+    background-size: auto;
+    background-image: url(../images/comment_bj.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
 
 
 

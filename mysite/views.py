@@ -13,7 +13,7 @@ def home(request):
     if cache.has_key(blogs_key):
         blogs_val = cache.get(blogs_key)
     else:
-        blogs_val = Blog.objects.order_by('-created_time')[:7]
+        blogs_val = Blog.objects.order_by('-created_time')[:10]
         cache.set(blogs_key, blogs_val, 3600)
     context['get_article_all'] = blogs_val
     return render(request, 'home.html', context)

@@ -8,8 +8,6 @@
 
 {% block header_extends %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}"/>
-    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
-    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
 {% endblock %}
 
 {# 页面内容 #}
@@ -90,11 +88,16 @@
                         </div>
                     </div>
                     <!-- comment start -->
-                    {% comment %}<div class="comment-area">
-                        <h3 class="comment-area-title">提交评论</h3>
+                    <div class="comment-area">
+                        <div class="comment-area-title">
+                            <span><i class="fa fa-comments"></i>&nbsp;发表评论</span>
+                            <span class="jubao">
+                                <small><i class="fa fa-bullhorn"></i>&nbsp;请文明留言</small>
+                            </span>
+                        </div>
                         {% if user.is_authenticated %}
                             <form id="comment_form" action="{% url 'update_comment' %}" method="POST" style="overflow:hidden">
-                                <label>{{ user.get_nickname_or_username }}，欢迎评论~</label>
+                                <label class="nickname">{{ user.get_nickname_or_username }}，欢迎评论~</label>
                                 <div id="reply_content_container" style="display:none;">
                                     <p id="reply_title">回复：</p>
                                     <div id="reply_content"></div>
@@ -105,7 +108,7 @@
                                     {{ field }}
                                 {% endfor %}
                                 <span id="comment_error" class="text-danger pull-left"></span>
-                                <input type="submit" value="评论" class="btn btn-primary pull-right">
+                                <input type="submit" value="发表" class="btn btn-primary pull-right">
                             </form>
                         {% else %}
                             您尚未登录，登录之后方可评论~
@@ -113,8 +116,8 @@
                             <span> or </span>
                             <a class="btn btn-danger" href="{% url 'register' %}?from={{ request.get_full_path }}">注册</a>
                         {% endif %}
-                    </div>{% endcomment %}
-                    {% comment %}<div class="comment-area">
+                    </div>
+                    <div class="comment-area">
                     <h3 class="comment-area-title">评论列表</h3>
                     <div id="comment_list">
                         {% get_comment_list blog as comments %}
@@ -153,7 +156,7 @@
                             <span id="no_comment">暂无评论</span>
                         {% endfor %}
                     </div>
-                </div>{% endcomment %}
+                </div>
                 </div>
                 <div class="col-md-3">
                     <!-- about -->

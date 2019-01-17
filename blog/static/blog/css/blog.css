@@ -30,21 +30,9 @@ div.blog-content{
     text-align: justify;
 }
 div.blog-more {
-    margin-top: 1em;
+    margin-top: 3rem;
+    padding-bottom: 2rem;
 }
-
-div.comment-area {
-    margin-top: 2em;
-}
-h3.comment-area-title {
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 0.4em;
-}
-
-div.django-ckeditor-widget {
-    width: 100%;
-}
-
 div.comment {
     border-bottom: 1px dashed #ccc;
     margin-bottom: 0.5em;

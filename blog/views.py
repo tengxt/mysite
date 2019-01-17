@@ -84,6 +84,7 @@ def blog_detail(request, blog_pk):
     context['previous_blog'] = Blog.objects.filter(created_time__gt=blog.created_time).last()
     context['next_blog'] = Blog.objects.filter(created_time__lt=blog.created_time).first()
     context['blog'] = blog
+    context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
     response = render(request, 'blog/blog_detail.html', context) # 响应
     response.set_cookie(read_cookie_key, 'true') # 阅读cookie标记
     return response

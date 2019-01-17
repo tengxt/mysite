@@ -1,6 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404
 from django.contrib.contenttypes.models import ContentType
-from django.urls import reverse
 from django.http import JsonResponse
 from .models import Comment
 from .forms import CommentForm
@@ -52,6 +51,7 @@ def update_comment(request):
 
 def comment(request):
     context = {}
+    context['blog'] = get_object_or_404(Blog, pk=1)
     visitNumber = VisitNumber.objects.aggregate(nums=Sum('count'))
     context['visitNumber'] =visitNumber['nums']
     context['blogNumber'] = Blog.objects.count()
