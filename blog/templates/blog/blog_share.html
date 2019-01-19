@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}小涛博客-资源分享{% endblock %}
+{% block nav_share_active %}active{% endblock %}
+
+{% load staticfiles %}
+{% load comment_tags %}
+{% load likes_tags %}
+
+{% block header_extends %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{# 页面内容 #}
+{% block content %}
+    <div class="orther_body">
+        <div class="container">
+            <div class="row t_nav">
+                <div class="col-md-4">
+                    <a href="{% url 'home' %}" class="n1">网站首页</a>
+                    <a href="{% url 'share_list' %}" class="n2">资源分享</a>
+                </div>
+                <div class="col-md-8">
+                    <span class="pull-right">时光飞逝，机会就在我们眼前，学会把握机遇。</span>
+                </div>
+            </div>
+            <!-- content start -->
+            <div class="row">
+                {% for blog in blogs %}
+                    <div class="col-md-3 share">
+                        <div class="shareli">
+                            <a href="{% url 'blog_detail' blog.pk %}" title="{{ blog.title }}" target="_blank" >
+                                <i><img src="{{ blog.picture }}" alt="{{ blog.title }}"></i>
+                                <h2><b>{{ blog.title }}</b></h2>
+                                <span>喜欢 | {{ blog.get_read_num }}</span>
+                            </a>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="blog">
+                        <h3>暂无资源，敬请期待</h3>
+                    </div>
+                {% endfor %}
+            </div>
+            <!-- content end -->
+            <!-- paginator start -->
+            <div class="paginator">
+                <ul class="pagination">
+                    {% for page_num in page_range %}
+                        {% if page_num == page_of_blogs.number %}
+                            <li class="active"><span>{{ page_num }}</span></li>
+                        {% else %}
+                            {% if page_num == '...' %}
+                                <li><span>{{ page_num }}</span></li>
+                            {% else %}
+                                <li><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <p>
+                    共有{{ page_of_blogs.paginator.count }}篇文章，
+                    当前第{{ page_of_blogs.number }}页，共{{ page_of_blogs.paginator.num_pages }}页
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

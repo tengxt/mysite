@@ -190,6 +190,23 @@
                             </ul>
                         </div>
                     </div>
+                    <!-- hot tag -->
+                    <div class="panel panel-default cloud">
+                        <div class="panel-heading">
+                            <span class="panel-title"><i class="fa fa-tags"></i>&nbsp;热门标签</span>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="tag">
+                                {% for blog_tag in blog_tags %}
+                                    <a href="{% url 'blogs_with_tag' blog_tag.pk %}">
+                                        {{ blog_tag.tag_name }} ({{ blog_tag.blog_count }})
+                                    </a>
+                                {% empty %}
+                                    <li>暂无标签</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>

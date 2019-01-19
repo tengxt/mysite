@@ -46,10 +46,10 @@
                         <a href="{% url 'home' %}"><i class="fa fa-code"></i>&nbsp;技术</a>
                     </li>{% endcomment %}
                     <li class="{% block nav_share_active %}{% endblock %}">
-                        <a href="{% url 'share' %}"><i class="fa fa-cloud-download"></i>&nbsp;资源分享</a>
+                        <a href="{% url 'share_list' %}"><i class="fa fa-cloud-download"></i>&nbsp;资源分享</a>
                     </li>
                     <li class="{% block nav_time_active %}{% endblock %}">
-                        <a href="{% url 'time' %}"><i class="fa fa-calendar"></i>&nbsp;时间轴</a>
+                        <a href="{% url 'timer_list' %}"><i class="fa fa-calendar"></i>&nbsp;时间轴</a>
                     </li>
                     <li class="{% block nav_comment_active %}{% endblock %}">
                         <a href="{% url 'comment' %}"><i class="fa fa-comments"></i>&nbsp;留言墙</a>

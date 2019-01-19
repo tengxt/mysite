@@ -1,5 +1,4 @@
 import datetime
-import random
 from django.contrib.contenttypes.models import ContentType
 from django.utils import timezone
 from django.db.models import Sum
@@ -49,6 +48,7 @@ def get_yesterday_hot_data(content_type):
     read_details = ReadDetail.objects.filter(content_type=content_type, date=yesterday).order_by('-read_num')
     return read_details[:7]
 
+# 7天内热门博客缓存
 def get_7_days_hot_blogs():
     today = timezone.now().date()
     date = today - datetime.timedelta(days=7)

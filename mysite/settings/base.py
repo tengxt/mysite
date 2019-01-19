@@ -25,8 +25,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ckeditor',  # ckeditor
-    'ckeditor_uploader',  # ckeditor_uploader
 	'blog', # blog app
     'read_statistics', # read_statistics
     'comment', #comment
@@ -117,43 +115,6 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# 配置cheditor
-CKEDITOR_UPLOAD_PATH = 'upload/'
-
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': (['div', 'Source', '-', 'Save', 'NewPage', 'Preview', '-', 'Templates'],
-                    ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
-                    ['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat', '-', 'Maximize',
-                     'ShowBlocks', '-', 'Subscript', 'Superscript', "CodeSnippet"],  # 添加"CodeSnippet"到toolbar中
-                    ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton',
-                     'HiddenField'],
-                    ['Bold', 'Italic', 'Underline', 'Strike', '-'],
-                    ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote'],
-                    ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
-                    ['Link', 'Unlink', 'Anchor'],
-                    ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak'],
-                    ['Styles', 'Format', 'Font', 'FontSize'],
-                    ['TextColor', 'BGColor'],
-                    ),
-                'extraPlugins': 'codesnippet',    # 此处需要添加
-    },
-    'comment_ckeditor' :{
-        'toolbar' : 'custom',
-        'toolbar_custom': [
-            ['Bold','Italic','Underline', 'Strike', 'Subscript', 'Superscript'],
-            ['TextColor', 'BGColor', 'RemoveFormat'],
-            ['NumberedList', 'BulletedList'],
-            ['Link', 'Unlink'],
-            ['Smiley', 'SpecialChar', 'Blockquote'],
-        ],
-        'width': 'auto',
-        'height': '180',
-        'tabSpaces': 4,
-        'removePlugins': 'elementspath',
-        'resize_enabled': False,
-    }
-}
 
 # 自动义参数
 # 每7篇文章进行分页

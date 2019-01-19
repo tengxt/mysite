@@ -9,4 +9,6 @@ urlpatterns = [
     path('type/<int:blog_type_pk>', views.blogs_with_type, name="blogs_with_type"),
     path('tag/<int:blog_tag_pk>', views.blogs_with_tag, name="blogs_with_tag"),
     path('date/<int:year>/<int:month>', views.blogs_with_date, name="blogs_with_date"),
+    path('share', views.blog_share, name='share_list'),
+    path('timer', views.blog_timer, name='timer_list'),
 ]

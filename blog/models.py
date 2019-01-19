@@ -25,12 +25,13 @@ class BlogTag(models.Model):
         return self.tag_name
 
 class Blog(models.Model, ReadNumExpandMethod):
-    title = models.CharField(verbose_name='文章标题', max_length=50)
-    blog_type = models.ForeignKey(BlogType, on_delete=models.CASCADE)
-    blog_tag = models.ForeignKey(BlogTag, on_delete=models.CASCADE)
-    picture = models.CharField(verbose_name='文章缩略图', max_length=500)
-    content = models.TextField(verbose_name='文章内容')
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(verbose_name='标题', max_length=50)
+    blog_style = models.CharField(verbose_name='栏目类型', max_length=50)
+    blog_type = models.ForeignKey(BlogType, verbose_name='文章类型', on_delete=models.CASCADE)
+    blog_tag = models.ForeignKey(BlogTag, verbose_name='文章标签', on_delete=models.CASCADE)
+    picture = models.CharField(verbose_name='缩略图', max_length=500)
+    content = models.TextField(verbose_name='内容')
+    author = models.ForeignKey(User, verbose_name='作者',on_delete=models.CASCADE)
     read_details = GenericRelation(ReadDetail)
     created_time = models.DateTimeField(verbose_name='创建时间', auto_now_add=True)
     last_updated_time = models.DateTimeField(verbose_name='修改时间', auto_now=True)

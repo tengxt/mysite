@@ -35,8 +35,7 @@
                                 <span class="blogpic"><a href="{% url 'blog_detail' blog.pk %}"
                                                          title="{{ blog.title }}"><img
                                         src="{{ blog.picture }}" alt="{{ blog.title }}"></a></span>
-                                <p class="blogtext"><a href="{% url 'blog_detail' blog.pk %}"
-                                                         title="{{ blog.title }}">{{ blog.content|striptags|truncatechars:150 }}</a></p>
+                                <p class="blogtext">{{ blog.content|striptags|truncatechars:150 }}</p>
                                 <div class="bloginfo">
                                     <ul>
                                         <li class="author"><a href="/"><i class="fa fa-user-circle"></i>&nbsp;小涛</a>
@@ -100,14 +99,14 @@
                             </li>{% endcomment %}
                         </ul>
                         <p>
-                            共有{{ page_of_blogs.paginator.count }}篇博客，
+                            共有{{ page_of_blogs.paginator.count }}篇文章，
                             当前第{{ page_of_blogs.number }}页，共{{ page_of_blogs.paginator.num_pages }}页
                         </p>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <!-- notice -->
-                    <div class="panel panel-default side-box">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
                             <span class="panel-title"><i class="fa fa-snowflake-o"></i>&nbsp;赏析</span>
                         </div>
