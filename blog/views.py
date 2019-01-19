@@ -1,7 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator
 from django.core.cache import cache
-from django.views.decorators.cache import cache_page
 from django.conf import settings
 from django.db.models import Count
 from read_statistics.utils import get_7_days_hot_blogs
@@ -34,20 +33,22 @@ def get_blog_list_common_data(request, blogs_all_list):
     context['page_range'] = page_range
     return context
 
-def blog_list(request):
-    blogs_all_list = Blog.objects.filter(blog_style='文章')
-    context = get_blog_list_common_data(request, blogs_all_list)
-    # 获取日期归档对应的博客数量
+# 获取日期归档对应的博客数量
+def get_blog_dates_data():
     blog_dates = Blog.objects.dates('created_time', 'month', order="DESC")
     blog_dates_dict = {}
     for blog_date in blog_dates:
         blog_count = Blog.objects.filter(created_time__year=blog_date.year,
                                          created_time__month=blog_date.month).count()
         blog_dates_dict[blog_date] = blog_count
+    return blog_dates_dict
 
+def blog_list(request):
+    blogs_all_list = Blog.objects.filter(blog_style='文章')
+    context = get_blog_list_common_data(request, blogs_all_list)
     context['blog_types'] = BlogType.objects.annotate(blog_count=Count('blog'))
     context['blog_tags'] = BlogTag.objects.annotate(blog_count=Count('blog'))
-    context['blog_dates'] = blog_dates_dict
+    context['blog_dates'] = get_blog_dates_data()
     context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
     return render(request, 'blog/blog_list.html', context)
 
@@ -55,17 +56,10 @@ def blogs_with_type(request, blog_type_pk):
     blog_type = get_object_or_404(BlogType, pk=blog_type_pk)
     blogs_all_list = Blog.objects.filter(blog_type=blog_type)
     context = get_blog_list_common_data(request, blogs_all_list)
-    # 获取日期归档对应的博客数量
-    blog_dates = Blog.objects.dates('created_time', 'month', order="DESC")
-    blog_dates_dict = {}
-    for blog_date in blog_dates:
-        blog_count = Blog.objects.filter(created_time__year=blog_date.year,
-                                         created_time__month=blog_date.month).count()
-        blog_dates_dict[blog_date] = blog_count
 
     context['blog_types'] = BlogType.objects.annotate(blog_count=Count('blog'))
     context['blog_tags'] = BlogTag.objects.annotate(blog_count=Count('blog'))
-    context['blog_dates'] = blog_dates_dict
+    context['blog_dates'] = get_blog_dates_data()
     context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
     return render(request, 'blog/blogs_with_type.html', context)
 
@@ -78,17 +72,10 @@ def blogs_with_tag(request, blog_tag_pk):
         hot_tags_val = Blog.objects.filter(blog_tag=blog_tag)
         cache.set(hot_tags_val, hot_tags_val, 3600)
     context = get_blog_list_common_data(request, hot_tags_val)
-    # 获取日期归档对应的博客数量
-    blog_dates = Blog.objects.dates('created_time', 'month', order="DESC")
-    blog_dates_dict = {}
-    for blog_date in blog_dates:
-        blog_count = Blog.objects.filter(created_time__year=blog_date.year,
-                                         created_time__month=blog_date.month).count()
-        blog_dates_dict[blog_date] = blog_count
 
     context['blog_types'] = BlogType.objects.annotate(blog_count=Count('blog'))
     context['blog_tags'] = BlogTag.objects.annotate(blog_count=Count('blog'))
-    context['blog_dates'] = blog_dates_dict
+    context['blog_dates'] = get_blog_dates_data()
     context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
     return render(request, 'blog/blogs_with_tag.html', context)
 
@@ -96,17 +83,10 @@ def blogs_with_date(request, year, month):
     blogs_all_list = Blog.objects.filter(created_time__year=year, created_time__month=month)
     context = get_blog_list_common_data(request, blogs_all_list)
     context['blogs_with_date'] = '%s年%s月' % (year, month)
-    # 获取日期归档对应的博客数量
-    blog_dates = Blog.objects.dates('created_time', 'month', order="DESC")
-    blog_dates_dict = {}
-    for blog_date in blog_dates:
-        blog_count = Blog.objects.filter(created_time__year=blog_date.year,
-                                         created_time__month=blog_date.month).count()
-        blog_dates_dict[blog_date] = blog_count
 
     context['blog_types'] = BlogType.objects.annotate(blog_count=Count('blog'))
     context['blog_tags'] = BlogTag.objects.annotate(blog_count=Count('blog'))
-    context['blog_dates'] = blog_dates_dict
+    context['blog_dates'] = get_blog_dates_data()
     context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
     return render(request, 'blog/blogs_with_date.html', context)
 

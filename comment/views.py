@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
 from django.contrib.contenttypes.models import ContentType
 from django.http import JsonResponse
 from .models import Comment
@@ -8,7 +9,7 @@ from django.db.models import Sum, Count
 from visits.models import *
 from blog.models import *
 
-
+@csrf_exempt #增加装饰器，作用是跳过 csrf 中间件的保护
 def update_comment(request):
     referer = request.META.get('HTTP_REFERER', reverse('home'))
     comment_form = CommentForm(request.POST, user=request.user)

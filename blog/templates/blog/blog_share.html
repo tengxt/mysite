@@ -25,21 +25,40 @@
             </div>
             <!-- content start -->
             <div class="row">
-                {% for blog in blogs %}
-                    <div class="col-md-3 share">
-                        <div class="shareli">
-                            <a href="{% url 'blog_detail' blog.pk %}" title="{{ blog.title }}" target="_blank" >
-                                <i><img src="{{ blog.picture }}" alt="{{ blog.title }}"></i>
-                                <h2><b>{{ blog.title }}</b></h2>
-                                <span>喜欢 | {{ blog.get_read_num }}</span>
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <!-- content start -->
+                    <div class="blogsbox">
+                        {% for blog in blogs %}
+                         <article>
+                            <a href="{% url 'blog_detail' blog.pk %}">
+                                <div class="post-card" id="post-card-{{ blog.pk }}">
+                                    <div class="blog-background" style="background-image: url({{ blog.picture }})"></div>
+                                    <div class="lazyload-container"></div>
+                                    <img src="" style="display: none" onload="javascript:loadBanner(this, '{{ blog.picture }}', '', document.querySelector('#post-card-{{ blog.pk }}'), '-1', document.querySelector('#post-card-1952').offsetWidth, document.querySelector('#post-card-{{ blog.pk }}').offsetHeight)">
+
+                                    <div class="post-card-mask">
+                                        <div class="post-card-container">
+                                            <h2 class="post-card-title" itemprop="headline"><span style="color:red"></span>{{ blog.title }}</h2>
+                                            <div class="post-card-info">
+                                                                <span itemprop="author" itemscope="">时间：{{ blog.created_time|date:"Y-m-d" }}</span>
+                                                <span class="label"><span class="biao">标签：{{ blog.blog_tag }}</span></span>
+                                                <span class="label">阅读：{{ blog.get_read_num }} </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </a>
-                        </div>
+                        </article>
+                        {% empty %}
+                            <div class="blog">
+                                <h3>暂无文章，敬请期待</h3>
+                            </div>
+                        {% endfor %}
                     </div>
-                {% empty %}
-                    <div class="blog">
-                        <h3>暂无资源，敬请期待</h3>
-                    </div>
-                {% endfor %}
+                    <!-- content end -->
+                </div>
+                <div class="col-md-1"></div>
             </div>
             <!-- content end -->
             <!-- paginator start -->

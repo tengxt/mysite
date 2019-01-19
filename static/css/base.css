@@ -26,7 +26,9 @@ div.user-bar {height: 3em;line-height: 3em;}
 span.btn-search {vertical-align: middle;color: #099;cursor: pointer;font-size: 110%!important;}
 .btn-login{margin: 0 .5em;color: #099;}
 button.qb_reg {background-color: #10a5a5;color: #fff;width: 60px;padding: 6px 12px!important;cursor: pointer;color: #fff;border: 0;}
-
+.paginator{
+    text-align: center;
+}
 /* Ëæ»ú±³¾°Í¼ */
 .orther_body{
     margin: 20px auto;

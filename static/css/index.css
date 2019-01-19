@@ -12,7 +12,7 @@ div.comment-area {
     float: right;
 }
 .nickname{
-    padding: 1rem;
+    padding: 1rem 0;
 }
 .comt-area {
     padding: 5px 5px 5px 10px;
@@ -31,31 +31,10 @@ div.comment-area {
     background-position: center;
 }
 
-
-
-
-
-
-/* blog_list.html */
-div.paginator {
-    text-align: center;
-}
-
-
-/* share.html */
-.share { overflow: hidden;padding-top: 10px; padding-bottom: 10px;}
-.shareli { position: relative; margin: 0 15px; background: #fff;-webkit-transition: all .3s ease;-moz-transition: all .3s ease;-ms-transition: all .3s ease;-o-transition: all .3s ease;transition: all .3s ease; }
-.shareli a i { height: 200px; display: block; overflow: hidden; }
-.shareli a i img { height: 200px; width: auto; margin: auto; }
-.shareli a h2 { height: 38px; font-size: 14px; line-height: 1.4;  padding: 5px 10px; font-weight: normal;}
-.shareli a h2 b { height: 38px; overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 2; font-weight: normal; }
-.shareli a span { display:inline-block; position: absolute; right: 0px; top: 15px; background: rgba(232, 40, 74, .8); color: #FFF; padding: 3px 8px; font-size: 12px; border-radius: 3px; }
-.shareli:hover { transform: translateY(-6px); -webkit-transform: translateY(-6px); -moz-transform: translateY(-6px); }
 /* blog_timer.html */
 div.time_body{
 	margin-bottom:50px;
 }
-
 
 .timebox {
     position: relative;
@@ -195,4 +174,42 @@ ul.infos {
     color: #999;
     line-height: 26px;
     text-align: justify;
+}
+.list_t_n {
+    border-bottom: 1px dotted #ddd;
+    margin-top: 25px;
+    padding-bottom: 5px;
+    font-size: 14px;
+}
+.c_t_n {
+    color: #e1171b;
+}
+.comment-text-center-new {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+    font-size: 1.15em;
+}
+.trunk {
+    color: #000;
+    zoom: 1;
+    padding: 8px 0 8px 8px;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+}
+.tie-bdy {
+    padding: 1rem;
+}
+.tie-cnt {
+    font-size: 14px;
+    white-space: normal;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.reply_button{
+    font-weight: bold;
+    margin-top: -1rem;
 }

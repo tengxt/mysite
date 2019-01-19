@@ -20,7 +20,7 @@ class CommentForm(forms.Form):
         if self.user.is_authenticated:
             self.cleaned_data['user'] = self.user
         else:
-            raise forms.ValidationError('用户尚未登录')
+            raise forms.ValidationError('请登录后再进行评论')
 
         # 评论对象验证
         content_type = self.cleaned_data['content_type']
