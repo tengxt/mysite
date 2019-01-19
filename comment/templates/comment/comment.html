@@ -248,7 +248,6 @@
                 data: $(this).serialize(),
                 cache: false,
                 success: function(data){
-                    console.log(data);
                     if(data['status']=="SUCCESS"){
                         if($('#reply_comment_id').val()=='0'){
                             // 插入评论
