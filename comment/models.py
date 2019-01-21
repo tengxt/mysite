@@ -32,13 +32,13 @@ class Comment(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
 
-    text = models.TextField()
-    comment_time = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User, related_name="comments", on_delete=models.CASCADE)
+    text = models.TextField( verbose_name='评论内容')
+    comment_time = models.DateTimeField(auto_now_add=True, verbose_name='评论时间')
+    user = models.ForeignKey(User, related_name="comments", verbose_name='评论用户', on_delete=models.CASCADE)
 
-    root = models.ForeignKey('self', related_name='root_comment', null=True, on_delete=models.CASCADE)
-    parent = models.ForeignKey('self', related_name='parent_comment', null=True, on_delete=models.CASCADE)
-    reply_to = models.ForeignKey(User, related_name="replies", null=True, on_delete=models.CASCADE)
+    root = models.ForeignKey('self', related_name='root_comment',verbose_name='文章根目录', null=True, on_delete=models.CASCADE)
+    parent = models.ForeignKey('self', related_name='parent_comment',verbose_name='父级目录', null=True, on_delete=models.CASCADE)
+    reply_to = models.ForeignKey(User, related_name="replies",verbose_name='回复评论', null=True, on_delete=models.CASCADE)
     
     def send_mail(self):
         if self.parent is None:
@@ -62,3 +62,5 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ['comment_time']
+        verbose_name = '评论列表'
+        verbose_name_plural = verbose_name
