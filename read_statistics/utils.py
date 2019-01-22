@@ -1,10 +1,11 @@
 import datetime
+import random
 from django.contrib.contenttypes.models import ContentType
 from django.utils import timezone
 from django.db.models import Sum
 from django.core.cache import cache
 from blog.models import Blog
-from .models import ReadNum, ReadDetail
+from .models import ReadNum, ReadDetail, ImagesList
 
 
 def read_statistics_once_read(request, obj):
@@ -63,3 +64,20 @@ def get_7_days_hot_blogs():
             .order_by('-read_num_sum')[:7]
         cache.set(hot_blogs_key, hot_blogs_val, 3600)
     return hot_blogs_val
+
+# background random
+def pics_list():
+    pics_key = 'pics_key'
+    if cache.has_key(pics_key):
+        pics_val = cache.get(pics_key)
+    else:
+        pics_val = ImagesList.objects.all().order_by('-id')
+        cache.set(pics_key, pics_val, 3600)
+    # 获取多少条记录
+    num = pics_val.count()
+    random_num = random.randint(1, num)
+    pic_dict = {}
+    for item in pics_val:
+        pic_dict[item.id] = item.pic
+    pic_dict_random = pic_dict.get(random_num)[6:]
+    return pic_dict_random

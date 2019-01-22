@@ -9,6 +9,7 @@ from django.http import JsonResponse
 from django.core.mail import send_mail
 from .forms import LoginForm, RegForm, ChangeNicknameForm, BindEmailForm, ChangePasswordForm, ForgotPasswordForm
 from .models import Profile
+from read_statistics.utils import pics_list
 
 
 def login_for_medal(request):
@@ -34,6 +35,7 @@ def login(request):
 
     context = {}
     context['login_form'] = login_form
+    context['background'] = pics_list()
     return render(request, 'user/login.html', context)
 
 def register(request):
@@ -57,6 +59,7 @@ def register(request):
 
     context = {}
     context['reg_form'] = reg_form
+    context['background'] = pics_list()
     return render(request, 'user/register.html', context)
     
 def logout(request):
@@ -65,6 +68,7 @@ def logout(request):
 
 def user_info(request):
     context = {}
+    context['background'] = pics_list()
     return render(request, 'user/user_info.html', context)
     
 
@@ -88,6 +92,7 @@ def change_nickname(request):
     context['submit_text'] = '修改'
     context['form'] = form
     context['return_back_url'] = redirect_to
+    context['background'] = pics_list()
     return render(request, 'form.html', context)
 
 def bind_email(request):
@@ -111,6 +116,7 @@ def bind_email(request):
     context['submit_text'] = '绑定'
     context['form'] = form
     context['return_back_url'] = redirect_to
+    context['background'] = pics_list()
     return render(request, 'user/bind_email.html', context)
 
 def send_verification_code(request):
@@ -163,6 +169,7 @@ def change_password(request):
     context['submit_text'] = '修改'
     context['form'] = form
     context['return_back_url'] = redirect_to
+    context['background'] = pics_list()
     return render(request, 'form.html', context)
 
 def forgot_password(request):
@@ -187,4 +194,5 @@ def forgot_password(request):
     context['submit_text'] = '重置'
     context['form'] = form
     context['return_back_url'] = redirect_to
+    context['background'] = pics_list()
     return render(request, 'user/forgot_password.html', context)

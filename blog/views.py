@@ -3,7 +3,7 @@ from django.core.paginator import Paginator
 from django.core.cache import cache
 from django.conf import settings
 from django.db.models import Count
-from read_statistics.utils import get_7_days_hot_blogs
+from read_statistics.utils import get_7_days_hot_blogs, pics_list
 from .models import Blog, BlogType, BlogTag
 from read_statistics.utils import read_statistics_once_read
 
@@ -31,6 +31,8 @@ def get_blog_list_common_data(request, blogs_all_list):
     context['blogs'] = page_of_blogs.object_list
     context['page_of_blogs'] = page_of_blogs
     context['page_range'] = page_range
+    context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
+    context['background'] = pics_list()
     return context
 
 # 获取日期归档对应的博客数量
@@ -49,7 +51,6 @@ def blog_list(request):
     context['blog_types'] = BlogType.objects.annotate(blog_count=Count('blog'))
     context['blog_tags'] = BlogTag.objects.annotate(blog_count=Count('blog'))
     context['blog_dates'] = get_blog_dates_data()
-    context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
     return render(request, 'blog/blog_list.html', context)
 
 def blogs_with_type(request, blog_type_pk):
@@ -60,7 +61,6 @@ def blogs_with_type(request, blog_type_pk):
     context['blog_types'] = BlogType.objects.annotate(blog_count=Count('blog'))
     context['blog_tags'] = BlogTag.objects.annotate(blog_count=Count('blog'))
     context['blog_dates'] = get_blog_dates_data()
-    context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
     return render(request, 'blog/blogs_with_type.html', context)
 
 def blogs_with_tag(request, blog_tag_pk):
@@ -76,7 +76,6 @@ def blogs_with_tag(request, blog_tag_pk):
     context['blog_types'] = BlogType.objects.annotate(blog_count=Count('blog'))
     context['blog_tags'] = BlogTag.objects.annotate(blog_count=Count('blog'))
     context['blog_dates'] = get_blog_dates_data()
-    context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
     return render(request, 'blog/blogs_with_tag.html', context)
 
 def blogs_with_date(request, year, month):
@@ -87,7 +86,6 @@ def blogs_with_date(request, year, month):
     context['blog_types'] = BlogType.objects.annotate(blog_count=Count('blog'))
     context['blog_tags'] = BlogTag.objects.annotate(blog_count=Count('blog'))
     context['blog_dates'] = get_blog_dates_data()
-    context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
     return render(request, 'blog/blogs_with_date.html', context)
 
 def blog_detail(request, blog_pk):
@@ -99,6 +97,7 @@ def blog_detail(request, blog_pk):
     context['blog'] = blog
     context['blog_tags'] = BlogTag.objects.annotate(blog_count=Count('blog'))
     context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
+    context['background'] = pics_list()
     response = render(request, 'blog/blog_detail.html', context) # 响应
     response.set_cookie(read_cookie_key, 'true') # 阅读cookie标记
     return response

@@ -4,7 +4,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.http import JsonResponse
 from .models import Comment
 from .forms import CommentForm
-from read_statistics.utils import get_7_days_hot_blogs
+from read_statistics.utils import get_7_days_hot_blogs, pics_list
 from django.db.models import Sum, Count
 from visits.models import *
 from blog.models import *
@@ -58,5 +58,6 @@ def comment(request):
     context['visitNumber'] =visitNumber['nums']
     context['blogNumber'] = Blog.objects.count()
     context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
+    context['background'] = pics_list()
     response = render(request, 'comment/comment.html', context)  # 响应
     return response

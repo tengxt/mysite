@@ -63,51 +63,62 @@
                             </p>
                         </div>
                     </div>
-                    <form id="comment_form" method="POST" style="overflow:hidden">
-                        <div id="reply_content_container" style="display:none;">
-                            <p id="reply_title">回复：</p>
-                            <div id="reply_content"></div>
-                        </div>
-                        {% csrf_token %}
-                        {% get_comment_form blog as comment_form %}
-                        {% for field in comment_form %}
-                            {{ field }}
-                        {% endfor %}
-                        <span id="comment_error" class="text-danger pull-left"></span>
-                        <input type="submit" value="发表" class="btn btn-primary pull-right">
-                    </form>
-                    <div class="list_t_n" id="comment_point">共 <span class="c_t_n" id="comment_total_num">{% get_comment_count blog %}</span> 条评论</div>
-                    <div id="comment_list">
-                        {% get_comment_list blog as comments %}
-                        {% for comment in comments %}
-                            <div id="root_{{ comment.pk }}" class="comment trunk">
-                                <span class="nickname">{{ comment.user.get_nickname_or_username }}</span>
-                                <span>（{{ comment.comment_time|date:"Y-m-d H:i:s" }}）：</span>
-                                <div class="tie-bdy" id="comment_{{ comment.pk }}">
-                                    <div class="tie-cnt">
-                                        <p>{{ comment.text|safe }}</p>
-                                    </div>
+                    <div class="comment-area panel panel-default" style="background-color: #FFF;">
+                        <div class="panel-body" style="margin: 1rem;">
+                            <div class="comment-area-title">
+                                <span><i class="fa fa-comments"></i>&nbsp;发表评论</span>
+                                <span class="jubao">
+                                    <small><i class="fa fa-bullhorn"></i>&nbsp;请文明留言</small>
+                                </span>
+                            </div>
+                            <form id="comment_form" method="POST" style="overflow:hidden">
+                                {% comment %}<label class="nickname">{{ user.get_nickname_or_username }}，欢迎评论~</label>{% endcomment %}
+                                <div id="reply_content_container" style="display:none;">
+                                    <p id="reply_title">回复：</p>
+                                    <div id="reply_content"></div>
                                 </div>
-                                    <a class="reply_button pull-right" href="javascript:reply({{ comment.pk }});">回复</a>
-
-                                {% for reply in comment.root_comment.all %}
-                                    <div class="reply trunk">
-                                        <span class="nickname">{{ reply.user.get_nickname_or_username }}</span>
-                                        <span>（{{ reply.comment_time|date:"Y-m-d H:i:s" }}）</span>
-                                        <span>回复</span>
-                                        <span class="nickname">{{ reply.reply_to.get_nickname_or_username }}：</span>
-                                        <div class="tie-bdy" id="comment_{{ reply.pk }}">
+                                {% csrf_token %}
+                                {% get_comment_form blog as comment_form %}
+                                {% for field in comment_form %}
+                                    {{ field }}
+                                {% endfor %}
+                                <span id="comment_error" class="text-danger pull-left"></span>
+                                <input type="submit" value="发表" class="btn btn-primary pull-right">
+                            </form>
+                            <div class="list_t_n" id="comment_point">共 <span class="c_t_n" id="comment_total_num">{% get_comment_count blog %}</span> 条评论</div>
+                            <div id="comment_list">
+                                {% get_comment_list blog as comments %}
+                                {% for comment in comments %}
+                                    <div id="root_{{ comment.pk }}" class="comment trunk">
+                                        <span class="nickname">{{ comment.user.get_nickname_or_username }}</span>
+                                        <span>（{{ comment.comment_time|date:"Y-m-d H:i:s" }}）：</span>
+                                        <div class="tie-bdy" id="comment_{{ comment.pk }}">
                                             <div class="tie-cnt">
-                                                <p>{{ reply.text|safe }}</p>
+                                                <p>{{ comment.text|safe }}</p>
                                             </div>
                                         </div>
-                                        <a class="reply_button pull-right" href="javascript:reply({{ reply.pk }});">回复</a>
+                                            <a class="reply_button pull-right" href="javascript:reply({{ comment.pk }});">回复</a>
+
+                                        {% for reply in comment.root_comment.all %}
+                                            <div class="reply trunk">
+                                                <span class="nickname">{{ reply.user.get_nickname_or_username }}</span>
+                                                <span>（{{ reply.comment_time|date:"Y-m-d H:i:s" }}）</span>
+                                                <span>回复</span>
+                                                <span class="nickname">{{ reply.reply_to.get_nickname_or_username }}：</span>
+                                                <div class="tie-bdy" id="comment_{{ reply.pk }}">
+                                                    <div class="tie-cnt">
+                                                        <p>{{ reply.text|safe }}</p>
+                                                    </div>
+                                                </div>
+                                                <a class="reply_button pull-right" href="javascript:reply({{ reply.pk }});">回复</a>
+                                            </div>
+                                        {% endfor %}
                                     </div>
+                                {% empty %}
+                                    <h2 class="comment-text-center-new"><i class="fa fa-frown-o"></i>&nbsp;还没有评论，来说两句吧...</h2>
                                 {% endfor %}
                             </div>
-                        {% empty %}
-                            <h2 class="comment-text-center-new"><i class="fa fa-frown-o"></i>&nbsp;还没有评论，来说两句吧...</h2>
-                        {% endfor %}
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-3">

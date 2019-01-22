@@ -11,7 +11,7 @@
     color: #333;
 }
 .news .info{
-    margin-top: 30px;
+    margin: 20px 0 10px 0;
 }
 
 ul.blog-info-description {
@@ -19,14 +19,14 @@ ul.blog-info-description {
 }
 ul.blog-info-description li{
     display: inline-block;
-    font-size: 12px;
+    font-size: 13px;
     padding: 0 0 0 20px;
     color: #748594;
     line-height: 1.5;
 }
 div.blog-content{
     line-height: 1.8;
-    font-size: 16px;
+    font-size: 1.5rem;
     text-align: justify;
 }
 div.blog-more {
