@@ -67,12 +67,12 @@
                                         </td>
                                         <td width="30%">
                                             服务器：
-                                            <a href="https://promotion.aliyun.com/ntms/act/campus2018.html?ali_trackid=2:mm_40446200_43636529_500876064:1546180005_135_1639955033&userCode=noarzf1b"
+                                            <a href="//promotion.aliyun.com/ntms/act/campus2018.html?ali_trackid=2:mm_40446200_43636529_500876064:1546180005_135_1639955033&userCode=noarzf1b"
                                                target="_blank" rel="nofollow">阿里云服务器</a>
                                         <td width="30%">
                                             投稿方式：
                                             <a href="Mailto:1300230407@qq.com"><img
-                                                    src="https://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_21.png"></a>
+                                                    src="//rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_21.png"></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -151,10 +151,17 @@
                     <div class="panel panel-default">
                         <div class="panel-body sidebar">
                             <div class="about">
-                              <p class="avatar"> <img src="{% static 'images/header.jpg' %}" alt=""> </p>
+                              <p class="avatar"> <img src="//ws4.sinaimg.cn/large/006eb3sJgy1fzj8mcz5uvj30ry0ry0u2.jpg" alt=""> </p>
                               <p class="abname">滕小涛</p>
                               <p class="abposition">Web开发&nbsp;程序猿</p>
-                              <p class="abtext">申请友链请联系我<br/>联系方式：1300230407@qq.com</p>
+                              <p class="abtext">
+                                  申请友链或其他请联系我<br/>
+                                  联系方式：1300230407@qq.com<br/>
+                                  QQ交流群：
+                                  <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=4eec807e59ec35a5612b13cdb1da69d951bc288018eddcc6db9a2d0dbad76adb">
+                                      935381895</a>
+                              </p>
+                              <p class="js_time"></p>
                             </div>
                         </div>
                     </div>
@@ -166,10 +173,10 @@
                         <div class="panel-body">
                             <ul class="list-group">
                                 {% for hot_blog in hot_blogs_for_7_days %}
-                                    <li class="list-group-item">
+                                    <li class="list-group-item hot-blogs">
                                         <span class="rank rank{{ forloop.counter }}">{{ forloop.counter }}</span>
                                         <a href="{% url 'blog_detail' hot_blog.id %}" title="{{ hot_blog.title }}">
-                                            {{ hot_blog.title|striptags|truncatechars:24 }}
+                                            {{ hot_blog.title }}
                                         </a>
                                     </li>
                                 {% empty %}
@@ -190,7 +197,7 @@
                                         {{ blog_tag.tag_name }} ({{ blog_tag.blog_count }})
                                     </a>
                                 {% empty %}
-                                    <li>暂无标签</li>
+                                    <li>暂无热门标签</li>
                                 {% endfor %}
                             </ul>
                         </div>

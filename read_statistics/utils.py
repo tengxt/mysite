@@ -38,17 +38,6 @@ def get_seven_days_read_data(content_type):
     return dates, read_nums
 
 
-def get_today_hot_data(content_type):
-    today = timezone.now().date()
-    read_details = ReadDetail.objects.filter(content_type=content_type, date=today).order_by('-read_num')
-    return read_details[:7]
-
-def get_yesterday_hot_data(content_type):
-    today = timezone.now().date()
-    yesterday = today - datetime.timedelta(days=1)
-    read_details = ReadDetail.objects.filter(content_type=content_type, date=yesterday).order_by('-read_num')
-    return read_details[:7]
-
 # 7天内热门博客缓存
 def get_7_days_hot_blogs():
     today = timezone.now().date()
@@ -61,7 +50,7 @@ def get_7_days_hot_blogs():
             .filter(read_details__date__lt=today, read_details__date__gte=date) \
             .values('id', 'title') \
             .annotate(read_num_sum=Sum('read_details__read_num')) \
-            .order_by('-read_num_sum')[:7]
+            .order_by('-read_num_sum')[:5]
         cache.set(hot_blogs_key, hot_blogs_val, 3600)
     return hot_blogs_val
 
@@ -71,9 +60,9 @@ def pics_list():
     if cache.has_key(pics_key):
         pics_val = cache.get(pics_key)
     else:
-        pics_val = ImagesList.objects.all().order_by('-id')
+        pics_val = ImagesList.objects.all()
         cache.set(pics_key, pics_val, 3600)
-    # 获取多少条记录
+    # 获取图片总数作为随机数
     num = pics_val.count()
     random_num = random.randint(1, num)
     pic_dict = {}
