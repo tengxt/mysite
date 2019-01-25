@@ -35,7 +35,7 @@
                                 <span class="blogpic"><a href="{% url 'blog_detail' blog.pk %}"
                                                          title="{{ blog.title }}"><img
                                         src="{{ blog.picture }}" alt="{{ blog.title }}"></a></span>
-                                <p class="blogtext">{{ blog.content|striptags|safe|truncatechars:350|linebreaks }}</p>
+                                <p class="blogtext">{{ blog.content|striptags|truncatechars:360 }}</p>
                                 <div class="bloginfo">
                                     <ul>
                                         <li class="author"><a href="/"><i class="fa fa-user-circle"></i>&nbsp;小涛</a>
