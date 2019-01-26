@@ -59,14 +59,26 @@
                 <ul class="nav navbar-nav navbar-right">
                     {% if not user.is_authenticated %}
                         <li>
-                            <a href="{% url 'login' %}?from={{ request.get_full_path }}">
-                                <i class="fa fa-bell" aria-hidden="true"></i>&nbsp;登录
-                            </a>
+                            {% if request.GET.from %}
+                                <a href="{% url 'login' %}?from={{ request.GET.from }}">
+                                    <i class="fa fa-bell" aria-hidden="true"></i>&nbsp;登录
+                                </a>
+                            {% else %}
+                                <a href="{% url 'login' %}?from={{ request.get_full_path }}">
+                                    <i class="fa fa-bell" aria-hidden="true"></i>&nbsp;登录
+                                </a>
+                            {% endif %}
                         </li>
                         <li>
-                            <a href="{% url 'register' %}?from={{ request.get_full_path }}">
-                                <i class="fa fa-sign-in"></i>&nbsp;注册
-                            </a>
+                            {% if request.GET.from %}
+                                <a href="{% url 'register' %}?from={{ request.GET.from }}">
+                                   <i class="fa fa-sign-in"></i>&nbsp;注册
+                                </a>
+                            {% else %}
+                                <a href="{% url 'register' %}?from={{ request.get_full_path }}">
+                                    <i class="fa fa-sign-in"></i>&nbsp;注册
+                                </a>
+                            {% endif %}
                         </li>
                     {% else %}
                         <li class="dropdown">
@@ -105,40 +117,7 @@
         </div>
     </div>
 
-    <div class="align-center align-middle" id="masthead" style="height: 426px;">
-        <div class="blog-background" style="background-image: url('{{ background }}');"></div>
-        <div class="inner"></div>
-    </div>
-
     {% block content %}{% endblock %}
-
-    <!-- Modal -->
-    <div class="modal fade" id="login_modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <form id="login_medal_form" action="" method="POST">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">登录</h4>
-                    </div>
-
-                    <div class="modal-body">
-                        {% csrf_token %}
-                        {% for field in login_modal_form %}
-                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                            {{ field }}
-                        {% endfor %}
-                        <span id="login_medal_tip" class="text-danger"></span>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">登录</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>                        
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
     <!-- footer -->
     <footer class="footer">
@@ -156,23 +135,28 @@
     <a href="javascript:void(0);" class="cd-top cd-fade-out"></a>
     {% block script_extends %}{% endblock %}
     <script type="text/javascript">
-
-        $("#login_medal_form").submit(function(event){
-            event.preventDefault();
-            $.ajax({
-                url: '{% url "login_for_medal" %}',
-                type: 'POST',
-                data: $(this).serialize(),
-                cache: false,
-                success: function(data){
-                    if(data['status']=='SUCCESS'){
-                        window.location.reload();
-                    }else{
-                        $('#login_medal_tip').text('用户名或密码不正确');
-                    }
+        //底部栏置底
+        //窗体改变大小事件
+        $(window).resize(function(){
+            //正文高度
+            var body_height = $(document.body).outerHeight(true);
+            //底部元素高度
+            var bottom_height = $(".footer").outerHeight(true);
+            //浏览器页面高度
+            var window_height = $(window).height();
+            //判断并调整底部元素的样式
+            if($(".footer").hasClass('page-bottom')){
+                if(body_height + bottom_height >= window_height){
+                    $(".footer").removeClass('page-bottom');
                 }
-            });
+            }else{
+                if(body_height < window_height){
+                    $(".footer").addClass('page-bottom');
+                }
+            }
         });
+        //页面加载时，模拟触发一下resize事件
+        $(window).trigger('resize');
     </script>
 </body>
 </html>

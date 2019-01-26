@@ -36,6 +36,14 @@
     $(getCalendar()).appendTo(".js_time");
     // 网站运行时间
     $("#day").text(datedifference() + " (天)");
+
+    //图片查看
+    document.addEventListener('DOMContentLoaded', function () {
+            const zooming = new Zooming({
+                customSize: '30%'
+            });
+            zooming.listen('img');
+    })
 });
 
 

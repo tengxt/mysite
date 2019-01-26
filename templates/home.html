@@ -12,6 +12,10 @@
 {% block nav_home_active %}active{% endblock %}
 
 {% block content %}
+    <div class="align-center align-middle" id="masthead" style="height: 426px;">
+        <div class="blog-background" style="background-image: url('{{ background }}');"></div>
+        <div class="inner"></div>
+    </div>
     <div class="orther_body">
         <div class="container">
             <div class="row">
@@ -53,16 +57,3 @@
         </div>
     </div>
 {% endblock %}
-
-<script type="text/javascript">
-        {% comment %}(function ($) {
-            hljs.initHighlightingOnLoad();
-        })(jQuery);{% endcomment %}
-        //图片查看
-        document.addEventListener('DOMContentLoaded', function () {
-            const zooming = new Zooming({
-                customSize: '30%'
-            });
-            zooming.listen('img');
-        })
-</script>

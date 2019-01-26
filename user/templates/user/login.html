@@ -1,38 +1,44 @@
 {% extends 'base.html' %}
 
-{% block title %}我的网站|登录{% endblock %}
+{% block title %}小涛博客 - 登录{% endblock %}
 {% block nav_home_active %}active{% endblock %}
 {% block content %}
-    <div class="containter">
+    <div class="container form_content">
         <div class="row">
-            <div class="col-xs-4 col-xs-offset-4">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 col-xs-12">
                 {% if not user.is_authenticated %}
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title">登录</h3>
                         </div>
-                        <div class="panel-body">
-                            <form action="" method="POST">
+                        <div class="panel-body" style="padding-bottom: 1rem;">
+                            <form action="" method="POST" class="form_lg_rg">
                                 {% csrf_token %}
                                 {% for field in login_form %}
                                     <label for="{{ field.id_for_label }}">{{ field.label }}</label>
                                     {{ field }}
                                     <p class="text-danger">{{ field.errors.as_text }}</p>
                                 {% endfor %}
-                                <span class="text-danger">{{ login_form.non_field_errors }}</span>
+                                <span id="tip" class="text-danger">{{ login_form.non_field_errors }}</span>
                                 <div class="clearfix"></div>
                                 <a href="{% url 'forgot_password' %}" class="pull-left">忘记密码？</a>
                                 <input type="submit" value="登录" class="btn btn-primary pull-right">
                             </form>
                         </div>
-                    </div>  
+                    </div>
+                    {% if request.GET.from %}
+                        <a class="lg-rg-a" href="{% url 'register' %}?from={{ request.GET.from }}">前往注册 &gt;&gt;</a>
+                    {% else %}
+                        <a class="lg-rg-a" href="{% url 'register' %}?from={{ request.get_full_path }}">前往注册 &gt;&gt;</a>
+                    {% endif %}
                 {% else %}
-                    <span>已登录，跳转到首页...</span>
                     <script type="text/javascript">
                         window.location.href = '/';
                     </script>
                 {% endif %}              
             </div>
+            <div class="col-md-3"></div>
         </div>
     </div>    
 {% endblock %}

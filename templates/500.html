@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block title %}我的网站|发生错误{% endblock %}
+{% block title %}小涛博客 - 发生500错误{% endblock %}
 {% block blog_active %}active{% endblock %}
 
-{% block header_extends %}
-	<link rel="stylesheet" href="{% static 'home.css' %}">
-{% endblock %}
 
-
-
-{% block content %}
-    500，发生错误！我们已经发送邮件给管理员了...
+{% block script_extends %}
+    <script type="text/javascript">
+        $("body").css({
+            "background-image":"url('//ws1.sinaimg.cn/large/006eb3sJgy1fzkfhdti5pj30zk0gumxj.jpg')",
+            "background-size":"cover"
+        });
+    </script>
 {% endblock %}

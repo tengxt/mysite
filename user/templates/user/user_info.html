@@ -1,26 +1,46 @@
 {% extends 'base.html' %}
 
-{% block title %}个人资料{% endblock %}
+{% block title %}小涛博客 - 个人资料{% endblock %}
 {% block nav_home_active %}active{% endblock %}
 {% block content %}
-    <div class="containter">
+    <div class="container form_content">
         <div class="row">
-            <div class="col-xs-10 col-xs-offset-1">
-                {% if user.is_authenticated %}
-                    <h2>{{ user.username }}</h2>
-                    <ul>
-                        <li>昵称：{{ user.get_nickname }} <a href="{% url 'change_nickname' %}?from={{ request.get_full_path }}">修改昵称</a></li>
-                        <li>邮箱：{% if user.email %}{{ user.email }}{% else %}未绑定 <a href="{% url 'bind_email' %}?from={{ request.get_full_path }}">绑定邮箱</a>{% endif %}</li>
-                        <li>上一次登录的时间：{{ user.last_login|date:"Y-m-d H:i:s" }}</li>
-                        <li><a href="{% url 'change_password' %}">修改密码</a></li>
-                    </ul>
-                {% else %}
-                    <span>未登录，跳转到首页...</span>
-                    <script type="text/javascript">
-                        window.location.href = '/';
-                    </script>
-                {% endif %}
+            <div class="col-md-3"></div>
+            <div class="col-md-6 col-xs-12">
+                <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">个人资料</h3>
+                        </div>
+                        <div class="panel-body" style="padding-bottom: 1rem;">
+                            {% if user.is_authenticated %}
+                                <div class="form_lg_rg">
+                                    <div class="head pull-left">
+                                        <div class="head-avatar">
+                                            <img src="//ws4.sinaimg.cn/large/006eb3sJgy1fzj8mcz5uvj30ry0ry0u2.jpg" title="">
+                                        </div>
+                                    </div>
+                                    <div class="info pull-right">
+                                        <p><label>用户名：</label><b>{{ user.username }}</b></p>
+                                        <ul>
+                                            <li>
+                                                昵称：<b>{{ user.get_nickname }}</b>
+                                                <a href="{% url 'change_nickname' %}?from={{ request.get_full_path }}">修改昵称</a>
+                                            </li>
+                                            <li>邮箱：{% if user.email %}{{ user.email }}{% else %}未绑定 <a href="{% url 'bind_email' %}?from={{ request.get_full_path }}">绑定邮箱</a>{% endif %}</li>
+                                            <li>上一次登录时间：{{ user.last_login|date:"Y-m-d" }}</li>
+                                            <li><a href="{% url 'change_password' %}">修改密码</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <script type="text/javascript">
+                                    window.location.href = '/';
+                                </script>
+                            {% endif %}
+                        </div>
+                </div>
             </div>
+            <div class="col-md-3"></div>
         </div>
     </div>    
 {% endblock %}

@@ -69,7 +69,30 @@ button.qb_reg {
     padding: 0 15px;
     height: 50px;
     line-height: 50px;
-
+}
+.form_lg_rg{
+    padding: 2rem;
+}
+.head{
+    position: relative;
+    width: 30%;
+    display: inline-block;
+}
+.info{
+    width: 70%;
+}
+.head-avatar {
+    position: absolute;
+    left: 0rem;
+    top: 0rem;
+    width: 80px;
+    height: 80px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: #d9d9d9 1px solid;
+    font-size: 0;
+    cursor: pointer;
 }
 /* Ëæ»ú±³¾°Í¼ */
 #masthead {
@@ -399,12 +422,25 @@ div.containter{
     margin-top: 80px;
 }
 
-
+.form_content{
+    margin: 80px auto 50px auto !important;
+}
 
 
 /* footer begin*/
-footer{background-color: #e0e0e0;text-align:center;}
-p.copyright{padding-top: 1em;}
+.footer{
+    background-color: #e0e0e0;
+    text-align:center;
+    margin-top: 10px;
+}
+.page-bottom{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+p.copyright{
+    padding-top: 1em;
+}
 .cd-top.cd-is-visible {
     visibility: visible;
     opacity: 1;
@@ -426,4 +462,8 @@ p.copyright{padding-top: 1em;}
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
+}
+.lg-rg-a{
+    text-align: center;
+    display: block;
 }
