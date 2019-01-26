@@ -202,6 +202,24 @@
                             </ul>
                         </div>
                     </div>
+                    <!-- links -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span class="panel-title"><i class="fa fa-link"></i>&nbsp;友情链接</span>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-unstyled shiplink">
+                                {% for links in links_list %}
+                                    <li>
+                                        <a href="{{ links.link_href }}" titile="{{ links.link_name }}" target="_blank">
+                                        {{ links.link_name }}</a>
+                                    </li>
+                                    {% empty %}
+                                    <li>暂无友链</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>

@@ -3,7 +3,7 @@ from django.core.paginator import Paginator
 from django.core.cache import cache
 from django.conf import settings
 from django.db.models import Count
-from read_statistics.utils import get_7_days_hot_blogs, pics_list
+from read_statistics.utils import get_7_days_hot_blogs, pics_list, links_list
 from .models import Blog, BlogType, BlogTag
 from read_statistics.utils import read_statistics_once_read
 
@@ -32,6 +32,7 @@ def get_blog_list_common_data(request, blogs_all_list):
     context['page_of_blogs'] = page_of_blogs
     context['page_range'] = page_range
     context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
+    context['links_list'] = links_list()
     context['background'] = pics_list()
     context['blog_types'] = BlogType.objects.annotate(blog_count=Count('blog'))
     context['blog_tags'] = BlogTag.objects.annotate(blog_count=Count('blog'))
@@ -39,8 +40,9 @@ def get_blog_list_common_data(request, blogs_all_list):
 
 # 获取日期归档对应的博客数量
 def get_blog_dates_data():
+    num = Blog.objects.dates('created_time', 'month', order="DESC").count()
     blog_dates_dict = {}
-    blog_dates_key = 'blog_dates_key'
+    blog_dates_key = 'blog_dates_key_{0}'.format(num)
     if cache.has_key(blog_dates_key):
         blog_dates_val = cache.get(blog_dates_key)
     else:
@@ -54,7 +56,8 @@ def get_blog_dates_data():
     return blog_dates_dict
 
 def blog_list(request):
-    blog_list_key = 'blog_list_key'
+    num = Blog.objects.filter(blog_style='文章').count()
+    blog_list_key = 'blog_list_key_{0}'.format(num)
     if cache.has_key(blog_list_key):
         blog_list_val = cache.get(blog_list_key)
     else:
@@ -67,7 +70,7 @@ def blog_list(request):
 
 def blogs_with_type(request, blog_type_pk):
     blog_type = get_object_or_404(BlogType, pk=blog_type_pk)
-    hot_types_key = 'hot_types_key'
+    hot_types_key = 'hot_types_key_{0}'.format(blog_type_pk)
     if cache.has_key(hot_types_key):
         hot_types_val = cache.get(hot_types_key)
     else:
@@ -80,7 +83,7 @@ def blogs_with_type(request, blog_type_pk):
 
 def blogs_with_tag(request, blog_tag_pk):
     blog_tag = get_object_or_404(BlogTag, pk=blog_tag_pk)
-    hot_tags_key = 'hot_tags_key'
+    hot_tags_key = 'hot_tags_key_{0}'.format(blog_tag_pk)
     if cache.has_key(hot_tags_key):
         hot_tags_val = cache.get(hot_tags_key)
     else:
@@ -92,7 +95,7 @@ def blogs_with_tag(request, blog_tag_pk):
     return render(request, 'blog/blogs_with_tag.html', context)
 
 def blogs_with_date(request, year, month):
-    hot_with_date_key = 'hot_with_date_key'
+    hot_with_date_key = 'hot_with_date_key_{0}_{1}'.format(year, month)
     if cache.has_key(hot_with_date_key):
         hot_with_date_val = cache.get(hot_with_date_key)
     else:
@@ -120,7 +123,8 @@ def blog_detail(request, blog_pk):
 
 # 资源分享页
 def blog_share(request):
-    blog_share_key = 'blog_share_key'
+    num = Blog.objects.filter(blog_style='资源').count()
+    blog_share_key = 'blog_share_key_{0}'.format(num)
     if cache.has_key(blog_share_key):
         blog_share_val = cache.get(blog_share_key)
     else:
@@ -131,7 +135,8 @@ def blog_share(request):
 
 # 时间轴页
 def blog_timer(request):
-    blog_timer_key = 'blog_timer_key'
+    num = Blog.objects.all().count()
+    blog_timer_key = 'blog_timer_key_{0}'.format(num)
     if cache.has_key(blog_timer_key):
         blog_timer_val = cache.get(blog_timer_key)
     else:

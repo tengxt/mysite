@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ReadNum, ReadDetail, ImagesList
+from .models import ReadNum, ReadDetail, ImagesList, LinksList
 
 @admin.register(ReadNum)
 class ReadNumAdmin(admin.ModelAdmin):
@@ -11,4 +11,8 @@ class ReadDetailAdmin(admin.ModelAdmin):
 
 @admin.register(ImagesList)
 class ImagesListAdmin(admin.ModelAdmin):
-    list_display = ('id', 'pic',)
+    list_display = ('id', 'pic')
+
+@admin.register(LinksList)
+class LinksListAdmin(admin.ModelAdmin):
+    list_display = ('id', 'link_name', 'link_href', 'link_pic', 'link_content')

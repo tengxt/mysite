@@ -174,7 +174,7 @@
                                         {{ blog_tag.tag_name }} ({{ blog_tag.blog_count }})
                                     </a>
                                 {% empty %}
-                                    <li>暂无标签</li>
+                                    <li>暂无热门标签</li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -186,7 +186,14 @@
                         </div>
                         <div class="panel-body">
                             <ul class="list-unstyled shiplink">
-                                <li><a href="//xt998.github.io/" titile="github" target="_blank">xt998.github.io</a></li>
+                                {% for links in links_list %}
+                                    <li>
+                                        <a href="{{ links.link_href }}" titile="{{ links.link_name }}" target="_blank">
+                                        {{ links.link_name }}</a>
+                                    </li>
+                                    {% empty %}
+                                    <li>暂无友链</li>
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>

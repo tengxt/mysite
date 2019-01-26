@@ -5,7 +5,7 @@ from django.utils import timezone
 from django.db.models import Sum
 from django.core.cache import cache
 from blog.models import Blog
-from .models import ReadNum, ReadDetail, ImagesList
+from .models import ReadNum, ReadDetail, ImagesList, LinksList
 
 
 def read_statistics_once_read(request, obj):
@@ -56,17 +56,27 @@ def get_7_days_hot_blogs():
 
 # background random
 def pics_list():
-    pics_key = 'pics_key'
+    # 获取图片总数作为随机数
+    num = ImagesList.objects.all().count()
+    pics_key = 'pics_key_{0}'.format(num)
     if cache.has_key(pics_key):
         pics_val = cache.get(pics_key)
     else:
         pics_val = ImagesList.objects.all()
         cache.set(pics_key, pics_val, 3600)
-    # 获取图片总数作为随机数
-    num = pics_val.count()
     random_num = random.randint(1, num)
     pic_dict = {}
     for item in pics_val:
         pic_dict[item.id] = item.pic
     pic_dict_random = pic_dict.get(random_num)[6:]
     return pic_dict_random
+
+def links_list():
+    num = LinksList.objects.all().count()
+    links_key = 'links_key_{0}'.format(num)
+    if cache.has_key(links_key):
+        links_val = cache.get(links_key)
+    else:
+        links_val = LinksList.objects.all()
+        cache.set(links_key, links_val, 3600)
+    return links_val
