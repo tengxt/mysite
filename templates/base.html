@@ -56,7 +56,17 @@
                     </li>
                 </ul>
 
+
+
                 <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <form id="search" action="{% url 'search' %}" method="GET">
+                            <button for="search-input" type="submit" class="sub_btn">
+                                <i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">搜索图标</span>
+                            </button>
+                            <input id="search-input" class="form-control" placeholder="搜索..." value="" name="p" autocomplete="off" spellcheck="false" autocorrect="off" tabindex="1">
+                        </form>
+                    </li>
                     {% if not user.is_authenticated %}
                         <li>
                             {% if request.GET.from %}
@@ -123,7 +133,7 @@
     <footer class="footer">
       <div class="container">
         <p class="copyright">
-            <a href="http://www.miitbeian.gov.cn/">蜀ICP备18020741号-1</a>
+            <a href="//www.miitbeian.gov.cn/" target="_blank">蜀ICP备18020741号-1</a>
         </p>
         <p class="link">
             <a href="/sitemap.xml" target="_blank"><i class="fa fa-sitemap"></i>&nbsp;网站地图</a>
@@ -134,29 +144,5 @@
     </footer>
     <a href="javascript:void(0);" class="cd-top cd-fade-out"></a>
     {% block script_extends %}{% endblock %}
-    <script type="text/javascript">
-        //底部栏置底
-        //窗体改变大小事件
-        $(window).resize(function(){
-            //正文高度
-            var body_height = $(document.body).outerHeight(true);
-            //底部元素高度
-            var bottom_height = $(".footer").outerHeight(true);
-            //浏览器页面高度
-            var window_height = $(window).height();
-            //判断并调整底部元素的样式
-            if($(".footer").hasClass('page-bottom')){
-                if(body_height + bottom_height >= window_height){
-                    $(".footer").removeClass('page-bottom');
-                }
-            }else{
-                if(body_height < window_height){
-                    $(".footer").addClass('page-bottom');
-                }
-            }
-        });
-        //页面加载时，模拟触发一下resize事件
-        $(window).trigger('resize');
-    </script>
 </body>
 </html>

@@ -36,25 +36,43 @@
                                 <h3 class="blogtitle">
                                     <a href="{% url 'blog_detail' blog.pk %}">{{ blog.title }}</a>
                                 </h3>
-                                <span class="blogpic"><a href="{% url 'blog_detail' blog.pk %}"
-                                                         title="{{ blog.title }}"><img
-                                        src="{{ blog.picture }}" alt="{{ blog.title }}"></a></span>
-                                <p class="blogtext">{{ blog.content|striptags|truncatechars:360 }}</p>
+                                <span class="blogpic">
+                                    <a href="{% url 'blog_detail' blog.pk %}" title="{{ blog.title }}">
+                                        <img src="{{ blog.picture }}" alt="{{ blog.title }}">
+                                    </a>
+                                </span>
+                                <p class="blogtext">
+                                    <a href="{% url 'blog_detail' blog.pk %}">
+                                        {{ blog.content|striptags|truncatechars:400 }}
+                                    </a>
+                                </p>
                                 <div class="bloginfo">
                                     <ul>
-                                        <li class="author"><a href="/"><i class="fa fa-user-circle"></i>&nbsp;小涛</a>
+                                        <li class="author">
+                                            <a href="{% url 'blog_detail' blog.pk %}">
+                                                <i class="fa fa-user"></i>&nbsp;小涛
+                                            </a>
                                         </li>
-                                        <li class="lmname"><a href="{% url 'blogs_with_type' blog.blog_type.pk %}"><i
-                                                class="fa fa-bookmark"></i>&nbsp;{{ blog.blog_type }}</a></li>
-                                        <li class="timer"><i
-                                                class="fa fa-clock-o"></i>&nbsp;{{ blog.created_time|date:"Y-m-d" }}
+                                        {% comment %}<li class="lmname">
+                                            <a href="{% url 'blogs_with_type' blog.blog_type.pk %}">
+                                                <i class="fa fa-bookmark"></i>&nbsp;{{ blog.blog_type }}
+                                            </a>
+                                        </li>{% endcomment %}
+                                        <li class="timer">
+                                            <a href="{% url 'blog_detail' blog.pk %}">
+                                                <i class="fa fa-calendar"></i>&nbsp;{{ blog.created_time|date:"Y-m-d" }}
+                                            </a>
                                         </li>
-                                        <li class="view"><span><i
-                                                class="fa fa-eye"></i>&nbsp;{{ blog.get_read_num }}</span>
+                                        <li class="view">
+                                            <a href="{% url 'blog_detail' blog.pk %}">
+                                                <i class="fa fa-eye"></i>&nbsp;阅读：{{ blog.get_read_num }}
+                                            </a>
                                         </li>
-                                        <li class="like"><i class="fa fa-heart"></i>&nbsp;{% get_like_count blog %}</li>
-                                        <li class="like"><i
-                                                class="fa fa-comments"></i>&nbsp;{% get_comment_count blog %}</li>
+                                        <li class="like">
+                                            <a href="{% url 'blog_detail' blog.pk %}">
+                                                <i class="fa fa-comments"></i>&nbsp;评论：{% get_comment_count blog %}
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

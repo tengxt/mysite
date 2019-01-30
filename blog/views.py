@@ -144,3 +144,10 @@ def blog_timer(request):
         cache.set(blog_timer_key, blog_timer_val, 3600)
     context = get_blog_list_common_data(request, blog_timer_val)
     return render(request, 'blog/blog_timer.html', context)
+
+# 搜索页
+def blog_search(request):
+    val = request.GET.get('p')
+    article_list = Blog.objects.filter(title__icontains=val)
+    context = get_blog_list_common_data(request, article_list)
+    return render(request, 'blog/blog_search.html', context)

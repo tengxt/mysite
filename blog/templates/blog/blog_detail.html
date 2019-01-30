@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}{{ blog.title }}{% endblock %}
+{% block title %}小涛博客 - {{ blog.title }}{% endblock %}
 {% block nav_blog_active %}active{% endblock %}
 
 {% load staticfiles %}
@@ -33,14 +33,14 @@
                 <div class="col-md-9" style="background: #FFF;">
                     <div class="news">
                          <h3 class="title">{{ blog.title }}</h3>
-                        <div class="info">
+                        <div>
                             <ul class="blog-info-description">
                                 <li><i class="fa fa-user"></i>&nbsp;小涛</li>
                                 <li>
                                     <i class="fa fa-tags"></i>&nbsp;
                                     <a href="{% url 'blogs_with_tag' blog.blog_tag.pk %}">{{ blog.blog_tag }}</a>
                                 </li>
-                                <li><i class="fa fa-clock-o"></i>&nbsp;{{ blog.created_time|date:"Y-m-d" }}</li>
+                                <li><i class="fa fa-calendar"></i>&nbsp;{{ blog.created_time|date:"Y-m-d" }}</li>
                                 <li><i class="fa fa-eye"></i>&nbsp;{{ blog.get_read_num }}&nbsp;人已阅读</li>
                             </ul>
                         </div>
@@ -51,18 +51,14 @@
                             <span>喜欢</span>
                         </div>{% endcomment %}
                         <div class="blog-more">
-                            <p>上一篇：
+                            <p>
                                 {% if previous_blog %}
-                                    <a href="{% url 'blog_detail' previous_blog.pk %}">{{ previous_blog.title }}</a>
-                                {% else %}
-                                    没有了
+                                    上一篇：<a href="{% url 'blog_detail' previous_blog.pk %}" title="{{ next_blog.title }}">{{ previous_blog.title }}</a>
                                 {% endif %}
                             </p>
-                            <p>下一篇：
+                            <p>
                                 {% if next_blog %}
-                                    <a href="{% url 'blog_detail' next_blog.pk %}">{{ next_blog.title }}</a>
-                                {% else %}
-                                    没有了
+                                    下一篇：<a href="{% url 'blog_detail' next_blog.pk %}" title="{{ next_blog.title }}">{{ next_blog.title }}</a>
                                 {% endif %}
                             </p>
                         </div>
@@ -134,14 +130,14 @@
                         <div class="panel-body">
                             <ul class="list-group">
                                 {% for hot_blog in hot_blogs_for_7_days %}
-                                    <li class="list-group-item">
+                                    <li class="list-group-item hot-blogs">
                                         <span class="rank rank{{ forloop.counter }}">{{ forloop.counter }}</span>
                                         <a href="{% url 'blog_detail' hot_blog.id %}" title="{{ hot_blog.title }}">
                                             {{ hot_blog.title|striptags|truncatechars:24 }}
                                         </a>
                                     </li>
                                 {% empty %}
-                                    <li>暂时没有热门文章</li>
+                                    <li>暂无热门文章</li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -171,10 +167,8 @@
 
 {% block script_extends %}
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-    <script>
-        hljs.initHighlightingOnLoad();
-    </script>
     <script type="text/javascript">
+        hljs.initHighlightingOnLoad();
         String.prototype.format = function(){
             var str = this;
             for (var i = 0; i < arguments.length; i++) {

@@ -23,7 +23,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls')),
-    path('comment/', include('comment.urls')),
+    path('comment.html', include('comment.urls')),
     path('likes/', include('likes.urls')),
     path('user/', include('user.urls')),
 ]

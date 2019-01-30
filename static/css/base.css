@@ -110,9 +110,6 @@ button.qb_reg {
     -o-transition: 1s ease background-color;
     transition: 1s ease background-color;
 }
-#masthead {
-    min-height: 12.5rem;
-}
 #masthead::after {
     content: '';
     width: 150%;
@@ -313,24 +310,48 @@ article{
 .blogs .blogpic {
     float: left;
     width: 30%;
-    max-height: 170px;
+    max-height: 300px;
     margin-right: 20px;
     display: block;
     overflow: hidden;
 }
 .blogs .blogpic img { width: 100%; height: auto; -webkit-transition: all 0.6s ease; -moz-transition: all 0.6s ease; -o-transition: all 0.6s ease; transition: all 0.6s ease; margin-bottom: 10px }
-.blogs .blogpic :hover img { transform: scale(1.1) }
-.blogs .blogtitle { margin: 0 0 10px 0; font-size: 20px;}
-.blogs .blogtitle a:hover { color: #337ab7; }
-.blogs .blogtext { font-size: 14px; color: #566573; overflow: hidden; text-overflow: ellipsis; -webkit-box-orient: vertical; display: -webkit-box; -webkit-line-clamp: 3; margin-top: 20px }
-.bloginfo { overflow: hidden; margin-top: 30px }
-.bloginfo ul li { float: left; font-size: 12px; padding: 0 0 0 20px; margin: 0 15px 0 0; color: #748594; line-height: 1.5; display: inline-block; }
+.blogs .blogpic :hover img {
+    transform: scale(1.1);
+}
+.blogs .blogtitle {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+}
+.blogs .blogtitle a:hover {
+    color: #337ab7;
+}
+.blogs .blogtext {
+    font-size: 14px;
+    color: #566573;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+}
+.blogs .blogtext a{
+    color: #555;
+}
+.bloginfo {
+    overflow: hidden;
+    margin-top: 20px
+}
+.bloginfo ul li {
+    float: left;
+    font-size: 12px;
+    margin: 0 25px 0 0;
+    color: #748594;
+    line-height: 1.5;
+    display: inline-block;
+}
 .bloginfo ul li a { color: #748594; }
 .bloginfo ul li a:hover { color: #000 }
-/*bigpic*/
-.bigpic { overflow: hidden; width: 100%; display: block; margin-bottom: 20px; background: #000 }
-.bigpic img { width: 100%; -webkit-transition: all 0.6s ease; -moz-transition: all 0.6s ease; -o-transition: all 0.6s ease; -ms-transition: all 0.6s ease; transition: all 0.6s ease; }
-.bigpic:hover img { opacity: 0.8 }
 
 
 /*sidebar*/
@@ -466,4 +487,21 @@ p.copyright{
 .lg-rg-a{
     text-align: center;
     display: block;
+}
+
+#search {
+    position: relative;
+    font-size: 1.8rem;
+    top: .75rem;
+}
+#search-input{
+    padding-right: 2.5rem;
+}
+.sub_btn{
+    background-color: #FFF;
+    border: none;
+    position: absolute;
+    right: .8rem;
+    top: .35rem;
+    cursor: pointer;
 }

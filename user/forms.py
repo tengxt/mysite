@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class LoginForm(forms.Form):
     username_or_email = forms.CharField(
         label='用户名或邮箱', 
-        widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'请输入用户名或邮箱'})
+        widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'请输入用户名或邮箱', 'autofocus':'autofocus'})
     )
     password = forms.CharField(label='密码', 
                                widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'请输入密码'}))
@@ -32,7 +32,7 @@ class RegForm(forms.Form):
         label='用户名', 
         max_length=30,
         min_length=3,
-        widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'请输入3-30位用户名'})
+        widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'请输入3-30位用户名', 'autofocus':'autofocus'})
     )
     email = forms.EmailField(
         label='邮箱', 
@@ -99,7 +99,7 @@ class ChangeNicknameForm(forms.Form):
         label='新的昵称', 
         max_length=20,
         widget=forms.TextInput(
-            attrs={'class':'form-control', 'placeholder':'请输入新的昵称'}
+            attrs={'class':'form-control', 'placeholder':'请输入新的昵称', 'autofocus':'autofocus'}
         )
     )
 
@@ -126,7 +126,7 @@ class BindEmailForm(forms.Form):
     email = forms.EmailField(
         label='邮箱',
         widget=forms.EmailInput(
-            attrs={'class':'form-control', 'placeholder':'请输入正确的邮箱'}
+            attrs={'class':'form-control', 'placeholder':'请输入正确的邮箱', 'autofocus':'autofocus'}
         )
     )
     verification_code = forms.CharField(
@@ -177,7 +177,7 @@ class ChangePasswordForm(forms.Form):
     old_password = forms.CharField(
         label='旧的密码', 
         widget=forms.PasswordInput(
-            attrs={'class':'form-control', 'placeholder':'请输入旧的密码'}
+            attrs={'class':'form-control', 'placeholder':'请输入旧的密码', 'autofocus':'autofocus'}
         )
     )
     new_password = forms.CharField(
@@ -217,7 +217,7 @@ class ForgotPasswordForm(forms.Form):
     email = forms.EmailField(
         label='邮箱',
         widget=forms.EmailInput(
-            attrs={'class':'form-control', 'placeholder':'请输入绑定过的邮箱'}
+            attrs={'class':'form-control', 'placeholder':'请输入绑定过的邮箱', 'autofocus':'autofocus'}
         )
     )
     verification_code = forms.CharField(

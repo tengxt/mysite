@@ -43,7 +43,37 @@
                 customSize: '30%'
             });
             zooming.listen('img');
-    })
+    });
+
+    //底部栏置底
+    //窗体改变大小事件
+    $(window).resize(function(){
+        //正文高度
+        var body_height = $(document.body).outerHeight(true);
+        //底部元素高度
+        var bottom_height = $(".footer").outerHeight(true);
+        //浏览器页面高度
+        var window_height = $(window).height();
+        // 宽度
+        var window_width = $(window).width();
+        if(window_width >= 500){
+            $("#masthead").css("height","426px");
+        }else {
+            $("#masthead").css("height","320px");
+        }
+        //判断并调整底部元素的样式
+        if($(".footer").hasClass('page-bottom')){
+            if(body_height + bottom_height >= window_height){
+                $(".footer").removeClass('page-bottom');
+            }
+        }else{
+            if(body_height < window_height){
+                $(".footer").addClass('page-bottom');
+            }
+        }
+    });
+    //页面加载时，模拟触发一下resize事件
+    $(window).trigger('resize');
 });
 
 

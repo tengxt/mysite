@@ -64,9 +64,9 @@
                                     </tr>
                                     <tr>
                                         <td width="30%">使用技术：
-                                            <a style="cursor: pointer;" tabindex="0" role="button" id="staticBtn"
+                                            <a style="cursor: pointer;" tabindex="0" role="button" id="staticBtn" data-html="true"
                                                data-toggle="popover" data-placement="top" data-trigger="focus"
-                                               data-content="服务端：ECS、OSS、Nginx<br/>后端：Django2.0、Mysql8.0、Redis<br/>前端：bootstrap"
+                                               data-content="服务端：ECS、Nginx<br/>后端：Django 2.0、Mysql 8.0、Redis<br/>前端：bootstrap 3.7.2"
                                                data-title="使用技术">点此查看</a>
                                         </td>
                                         <td width="30%">
@@ -231,6 +231,9 @@
 
 {% block script_extends %}
     <script type="text/javascript">
+        $("#staticBtn").click(function () {
+           $(this).popover('show');
+        });
         String.prototype.format = function(){
             var str = this;
             for (var i = 0; i < arguments.length; i++) {
