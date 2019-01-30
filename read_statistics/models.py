@@ -48,3 +48,7 @@ class LinksList(models.Model):
     link_href = models.CharField(verbose_name='友链地址', max_length=200)
     link_pic = models.CharField(verbose_name='友链图标地址', max_length=200, blank=True)
     link_content = models.TextField(verbose_name='友链的描述', blank=True)
+
+    class Meta:
+        verbose_name = '友链详情列表'
+        verbose_name_plural = verbose_name

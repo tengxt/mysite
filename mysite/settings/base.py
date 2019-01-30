@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',  #sitemaps
 	'blog', # blog app
     'read_statistics', # read_statistics
     'comment', #comment
