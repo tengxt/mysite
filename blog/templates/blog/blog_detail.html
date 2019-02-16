@@ -45,11 +45,11 @@
                             </ul>
                         </div>
                         <div class="blog-content">{{ blog.content|safe }}</div>
-                        {% comment %}<div class="like" onclick="likeChange(this, '{% get_content_type blog %}', {{ blog.pk }})">
+                        <div class="like" onclick="likeChange(this, '{% get_content_type blog %}', {{ blog.pk }})">
                             <span class="glyphicon glyphicon-thumbs-up {% get_like_status blog %}"></span>
                             <span class="liked-num">{% get_like_count blog %}</span>
                             <span>喜欢</span>
-                        </div>{% endcomment %}
+                        </div>
                         <div class="blog-more">
                             <p>
                                 {% if previous_blog %}
@@ -264,5 +264,50 @@
             });
             return false;
         });
+        // 点赞
+        function likeChange(obj, content_type, object_id){
+            var is_like = obj.getElementsByClassName('active').length == 0
+            $.ajax({
+                url: "{% url 'like_change' %}",
+                type: 'GET',
+                data: {
+                    content_type: content_type,
+                    object_id: object_id,
+                    is_like: is_like
+                },
+                cache: false,
+                success: function(data){
+                    console.log(data)
+                    if(data['status']=='SUCCESS'){
+                        // 更新点赞状态
+                        var element = $(obj.getElementsByClassName('glyphicon'));
+                        if(is_like){
+                            element.addClass('active');
+                        }else{
+                            element.removeClass('active');
+                        }
+                        // 更新点赞数量
+                        var liked_num = $(obj.getElementsByClassName('liked-num'));
+                        liked_num.text(data['liked_num']);
+                    }else{
+                        if(data['code']==400){
+                            window.location.href = '{% url 'login' %}?from={{ request.GET.from }}';
+                        }else{
+                            alert(data['message']);
+                        }
+                    }
+                },
+                error: function(xhr){
+                    console.log(xhr)
+                }
+            });
+        }
+
+        if(window.location.hash){
+            $('html').animate({
+                scrollTop: $(window.location.hash).offset().top - 60
+            }, 500);
+        }
+
     </script>
 {% endblock %}

@@ -85,3 +85,12 @@ function datedifference() {
     var day = Math.floor(ile / (1000 * 60 * 60 * 24));
     return day;
 }
+
+//自定义实时获取未读消息
+function my_special_notification_callback(data){
+    unread_count = data['unread_count'];
+    if (unread_count == 0) {
+        unread_count = '';
+    }
+    $('.live_notify_badge').text(unread_count);
+}

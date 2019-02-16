@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.decorators.csrf import csrf_exempt
 from django.contrib.contenttypes.models import ContentType
 from django.http import JsonResponse
 from .models import Comment
@@ -8,8 +7,8 @@ from read_statistics.utils import get_7_days_hot_blogs, pics_list, links_list
 from django.db.models import Sum, Count
 from visits.models import *
 from blog.models import *
+from django.utils.html import strip_tags
 
-@csrf_exempt #增加装饰器，作用是跳过 csrf 中间件的保护
 def update_comment(request):
     referer = request.META.get('HTTP_REFERER', reverse('home'))
     comment_form = CommentForm(request.POST, user=request.user)
@@ -19,7 +18,7 @@ def update_comment(request):
         # 检查通过，保存数据
         comment = Comment()
         comment.user = comment_form.cleaned_data['user']
-        comment.text = comment_form.cleaned_data['text']
+        comment.text = strip_tags(comment_form.cleaned_data['text'])
         comment.content_object = comment_form.cleaned_data['content_object']
 
         parent = comment_form.cleaned_data['parent']
@@ -28,9 +27,6 @@ def update_comment(request):
             comment.parent = parent
             comment.reply_to = parent.user
         comment.save()
-
-        # 发送邮件通知
-        comment.send_mail()
 
         # 返回数据
         data['status'] = 'SUCCESS'

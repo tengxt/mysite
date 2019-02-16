@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load notifications_tags %}
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -23,6 +24,7 @@
     <script type="text/javascript" src="{% static 'js/scrollReveal.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/time.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/common.js' %}"></script>
+    <script type="text/javascript" src="{% static 'notifications/notify.js' %}"></script>
 </head>
 <body>
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -91,11 +93,10 @@
                     {% else %}
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                                {% if user.has_nickname %}
-                                    {{ user.username }}({{ user.get_nickname }}) 
-                                {% else %}
-                                    {{ user.username }}
-                                {% endif %}
+                                你好，{{ user.get_nickname_or_username }}
+                                <span class="badge unread-count live_notify_badge">
+                                    {% if unread_count > 0 %}{{ unread_count }}{% endif %}
+                                </span>
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
@@ -103,8 +104,11 @@
                                     <a href="{% url 'user_info' %}"><i class="fa fa-user"></i>&nbsp;个人资料</a>
                                 </li>
                                 <li>
-                                    <a href="{% url 'change_password' %}">
-                                        <i class="fa fa-pencil-square-o"></i>&nbsp;修改密码
+                                    <a href="{% url 'my_notifications' %}">
+                                        <i class="fa fa-pencil-square-o"></i>&nbsp;我的消息
+                                        <span class="badge unread-count live_notify_badge">
+                                            {% if unread_count > 0 %}{{ unread_count }}{% endif %}
+                                        </span>
                                     </a>
                                 </li>
                                 {% if user.is_staff or user.is_superuser %}
@@ -141,6 +145,7 @@
       </div>
     </footer>
     <a href="javascript:void(0);" class="cd-top cd-fade-out"></a>
+    {% register_notify_callbacks callbacks='my_special_notification_callback' %}
     {% block script_extends %}{% endblock %}
 </body>
 </html>

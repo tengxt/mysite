@@ -505,3 +505,24 @@ p.copyright{
     top: .35rem;
     cursor: pointer;
 }
+
+.unread-count{
+    background-color: #d9534f!important;
+}
+
+
+.btn_news{
+    margin-bottom: 1rem;
+}
+.notifications li a{
+    font-size: 1.55rem;
+    line-height: 0.55rem;
+}
+
+.read {
+    color: #bbb;
+}
+
+.read a {
+    color: #bbb;
+}

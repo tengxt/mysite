@@ -32,5 +32,7 @@ urlpatterns = [
     path('user/', include('user.urls')),
     path('sitemap.xml', sitemap, {'sitemaps': blog_sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('rss/', AllPostsRssFeed(), name='rss'),
+    path('notifications/', include('notifications.urls', namespace='notifications')),
+    path('my_notifications/', include('news.urls')),
 ]
 

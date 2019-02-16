@@ -1960,7 +1960,7 @@ Toolbar = (function(superClass) {
       toolbarHeight = 0;
       initToolbarFloat = (function(_this) {
         return function() {
-          _this.wrapper.css('position', 'static');
+          _this.wrapper.css('position', 'templates');
           _this.wrapper.width('auto');
           _this.editor.util.reflow(_this.wrapper);
           _this.wrapper.width(_this.wrapper.outerWidth());

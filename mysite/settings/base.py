@@ -26,12 +26,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',  #sitemaps
+    'notifications',
 	'blog', # blog app
     'read_statistics', # read_statistics
     'comment', #comment
     'likes', # likes
     'user', # user
     'visits', #visits
+    'news', #news
 
 ]
 
@@ -104,7 +106,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-STATIC_URL = '/static/'
+STATIC_URL = '/templates/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_collected')
 # 设置静态资源目录
 STATICFILES_DIRS = [
@@ -129,5 +131,10 @@ CACHES = {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },
     },
+}
+
+# django-notifications-hq设置
+DJANGO_NOTIFICATIONS_CONFIG = {
+    'USE_JSONFIELD': True,
 }
 
