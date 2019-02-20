@@ -22,7 +22,7 @@ def like_change(request):
     # 获取数据
     user = request.user
     if not user.is_authenticated:
-        return ErrorResponse(400, 'you were not login')
+        return ErrorResponse(400, '请登录后再点赞')
 
     content_type = request.GET.get('content_type')
     object_id = int(request.GET.get('object_id'))
@@ -32,7 +32,7 @@ def like_change(request):
         model_class = content_type.model_class()
         model_obj = model_class.objects.get(pk=object_id)
     except ObjectDoesNotExist:
-        return ErrorResponse(401, 'object not exist')
+        return ErrorResponse(401, '网络错误，请稍后重试')
 
     # 处理数据
     if request.GET.get('is_like') == 'true':
@@ -46,7 +46,7 @@ def like_change(request):
             return SuccessResponse(like_count.liked_num)
         else:
             # 已点赞过，不能重复点赞
-            return ErrorResponse(402, 'you were liked')
+            return ErrorResponse(402, '您已点赞过，不能重复点赞')
     else:
         # 要取消点赞
         if LikeRecord.objects.filter(content_type=content_type, object_id=object_id, user=user).exists():
@@ -60,7 +60,7 @@ def like_change(request):
                 like_count.save()
                 return SuccessResponse(like_count.liked_num)
             else:
-                return ErrorResponse(404, 'data error')
+                return ErrorResponse(404, '网络错误，请稍后重试')
         else:
             # 没有点赞过，不能取消
-            return ErrorResponse(403, 'you were not liked')
+            return ErrorResponse(403, '没有点赞过，不能取消')
