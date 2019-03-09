@@ -24,6 +24,7 @@ div.blog-content{
     letter-spacing: .15rem;
     font-family: Microsoft YaHei;
     border-bottom: 1px solid rgba(211,211,211);
+	padding-bottom: 2rem;
 }
 div.blog-more {
     margin-top: 3rem;
@@ -48,7 +49,7 @@ p#reply_title {
     padding-bottom: 0.5em;
 }
 .opera {
-	margin: 10px auto;
+	margin: 2rem auto;
     width: 80%;
 }
 .btn-like,.dasbox{
