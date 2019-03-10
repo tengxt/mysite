@@ -74,8 +74,77 @@
     });
     //页面加载时，模拟触发一下resize事件
     $(window).trigger('resize');
+	
+	
+	
+	// tags 
+	var ele = $(".cloud");
+	var zdheight = 320;
+	var eleChlid = $(".cloud .panel-body");
+	eleIsHidden(ele, zdheight, eleChlid);
+	// artType
+	var ele = $(".artType");
+	var zdheight = 320;
+	var eleChlid = $(".artType .panel-body");
+	eleIsHidden(ele, zdheight, eleChlid);
+	// dateType
+	var ele = $(".dateType");
+	var zdheight = 320;
+	var eleChlid = $(".dateType .panel-body");
+	eleIsHidden(ele, zdheight, eleChlid);
 });
 
+// 设置标签的显示
+function eleIsHidden(ele,zdheight,eleChlid){
+	// 获取高
+	var tagsHeight=ele.outerHeight(true);
+	// 标签的高与指定的高比较
+	if(tagsHeight > zdheight){
+		// 超出隐藏
+		ele.css({"overflow":"hidden", "height":zdheight+"px", "marginBottom":"20px"});
+		// 声明span元素并追加
+		var zkEle = $("<span class=\"tagsZkClick\">展开</span>");
+		zkEle.prependTo(eleChlid);
+		
+		eleChlid.css({"position":"relative"});
+		// 设置样式
+		$(".tagsZkClick").css({
+			"position":"absolute",
+			"width":"100%",
+			"height":"30px",
+			"lineHeight":"30px",
+			"top":(zdheight-75)+"px",
+			"textAlign":"center",
+			"backgroundColor":"#FFF",
+			"cursor":"pointer",
+			"color":"#c88326"
+		});
+		// 展开
+		$(".tagsZkClick").click(function(){
+			$(this).css({"display":"none"});
+			ele.css({"overflow":"visible", "height":"auto","marginBottom":"40px"});
+			var sqEle = $("<span class=\"tagsSqClick\">收起</span>");
+			sqEle.appendTo(eleChlid);
+			$(".tagsSqClick").css({
+				"position":"absolute",
+				"bottom":"-20px",
+				"width":"100%",
+				"height":"30px",
+				"lineHeight":"30px",
+				"textAlign":"center",
+				"backgroundColor":"#FFF",
+				"cursor":"pointer",
+				"color":"#c88326"
+			});
+			// 收起
+			$(".tagsSqClick").click(function(){
+				// 超出隐藏并设置展开的样式为可见
+				ele.css({"overflow":"hidden", "height":zdheight+"px", "marginBottom":"20px"});
+				$(".tagsZkClick").css({"display":"block"});
+			});
+		});
+	}
+}
 
 //运行天数
 function datedifference() {
