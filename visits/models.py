@@ -4,6 +4,8 @@ from django.utils import timezone
 #访问网站的ip地址和次数
 class Userip(models.Model):
     ip=models.CharField(verbose_name='IP地址',max_length=30)    #ip地址
+    address=models.CharField(verbose_name='地址',max_length=500, blank=True) # 地址
+    created_time = models.DateTimeField(verbose_name='访问时间', auto_now_add=True)
     count=models.IntegerField(verbose_name='访问次数',default=0) #该ip访问次数
     class Meta:
         verbose_name = '访问用户信息'

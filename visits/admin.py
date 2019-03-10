@@ -4,7 +4,7 @@ from .models import Userip, DayNumber, VisitNumber
 # Register your models here.
 @admin.register(Userip)
 class BlogTypeAdmin(admin.ModelAdmin):
-    list_display = ('id', 'ip', 'count')
+    list_display = ('id', 'ip', 'address', 'created_time', 'count')
 
 @admin.register(DayNumber)
 class BlogTypeAdmin(admin.ModelAdmin):
