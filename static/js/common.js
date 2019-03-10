@@ -82,16 +82,6 @@
 	var zdheight = 320;
 	var eleChlid = $(".cloud .panel-body");
 	eleIsHidden(ele, zdheight, eleChlid);
-	// artType
-	var ele = $(".artType");
-	var zdheight = 320;
-	var eleChlid = $(".artType .panel-body");
-	eleIsHidden(ele, zdheight, eleChlid);
-	// dateType
-	var ele = $(".dateType");
-	var zdheight = 320;
-	var eleChlid = $(".dateType .panel-body");
-	eleIsHidden(ele, zdheight, eleChlid);
 });
 
 // 设置标签的显示
