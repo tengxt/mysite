@@ -128,6 +128,7 @@ function eleIsHidden(ele,zdheight,eleChlid){
 			});
 			// 收起
 			$(".tagsSqClick").click(function(){
+				$(this).remove();
 				// 超出隐藏并设置展开的样式为可见
 				ele.css({"overflow":"hidden", "height":zdheight+"px", "marginBottom":"20px"});
 				$(".tagsZkClick").css({"display":"block"});
