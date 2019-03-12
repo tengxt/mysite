@@ -30,7 +30,7 @@ def change_info(request):  # 修改网站访问量和访问ip等信息
         uobj = Userip()
         uobj.ip = client_ip
         uobj.count = 1
-    #uobj.address = getAddrByIp(client_ip)
+    uobj.address = getAddrByIp(client_ip)
     uobj.save()
 
     # 增加今日访问次数
@@ -50,11 +50,7 @@ def getAddrByIp(uip):
     url = "http://ip.taobao.com/service/getIpInfo.php?ip="
     ipData = urllib.request.urlopen(url + uip).read()
     datadict = json.loads(ipData)
-    for oneinfo in datadict:
-        if oneinfo == "code":
-            if datadict[oneinfo] == 0:
-                return datadict["data"]["country"] + datadict["data"]["city"] + datadict["data"]["isp"]
-            else:
-                return None
-        else:
-            return None
+    if datadict["code"] == 0:
+        return datadict["data"]["country"]  + datadict["data"]["city"] + datadict["data"]["isp"]
+    else:
+        return None
