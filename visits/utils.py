@@ -30,7 +30,7 @@ def change_info(request):  # 修改网站访问量和访问ip等信息
         uobj = Userip()
         uobj.ip = client_ip
         uobj.count = 1
-    uobj.address = getAddrByIp(client_ip)
+    #uobj.address = getAddrByIp(client_ip)
     uobj.save()
 
     # 增加今日访问次数
