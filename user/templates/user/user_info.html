@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block title %}小涛博客 - 个人资料{% endblock %}
 {% block nav_home_active %}active{% endblock %}
@@ -16,7 +17,7 @@
                                 <div class="form_lg_rg">
                                     <div class="head pull-left">
                                         <div class="head-avatar">
-                                            <img src="//ws4.sinaimg.cn/large/006eb3sJgy1fzj8mcz5uvj30ry0ry0u2.jpg" title="">
+                                            <img src="{% static 'images/author.jpg' %}" title="">
                                         </div>
                                     </div>
                                     <div class="info pull-right">

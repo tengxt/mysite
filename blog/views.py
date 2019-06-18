@@ -33,7 +33,6 @@ def get_blog_list_common_data(request, blogs_all_list):
     context['page_range'] = page_range
     context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
     context['links_list'] = links_list()
-    context['background'] = pics_list()
     context['blog_types'] = BlogType.objects.annotate(blog_count=Count('blog'))
     context['blog_tags'] = BlogTag.objects.annotate(blog_count=Count('blog'))
     return context
@@ -116,7 +115,6 @@ def blog_detail(request, blog_pk):
     context['blog'] = blog
     context['blog_tags'] = BlogTag.objects.annotate(blog_count=Count('blog'))
     context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
-    context['background'] = pics_list()
     response = render(request, 'blog/blog_detail.html', context) # 响应
     response.set_cookie(read_cookie_key, 'true') # 阅读cookie标记
     return response

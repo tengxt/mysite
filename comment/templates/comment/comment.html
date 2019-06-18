@@ -13,7 +13,7 @@
 {# 页面内容 #}
 {% block content %}
     <div class="align-center align-middle" id="masthead" style="height: 426px;">
-        <div class="blog-background" style="background-image: url('{{ background }}');"></div>
+        <div class="blog-background" style="background-image: url('{% static 'images/comment-bg.jpg' %}');"></div>
         <div class="inner"></div>
     </div>
     <div class="orther_body">
@@ -155,7 +155,7 @@
                     <div class="panel panel-default">
                         <div class="panel-body sidebar">
                             <div class="about">
-                              <p class="avatar"> <img src="//ws4.sinaimg.cn/large/006eb3sJgy1fzj8mcz5uvj30ry0ry0u2.jpg" alt=""> </p>
+                              <p class="avatar"><img src="{% static 'images/author.jpg' %}" alt=""></p>
                               <p class="abname">滕小涛</p>
                               <p class="abposition">Web开发&nbsp;程序猿</p>
                               <p class="abtext">

@@ -13,7 +13,7 @@
 {# 页面内容 #}
 {% block content %}
     <div class="align-center align-middle" id="masthead" style="height: 426px;">
-        <div class="blog-background" style="background-image: url('{{ background }}');"></div>
+        <div class="blog-background" style="background-image: url('{% static 'images/blog-list-bg.jpg' %}');"></div>
         <div class="inner"></div>
     </div>
     <div class="orther_body">
@@ -38,7 +38,7 @@
                                 </h3>
                                 <span class="blogpic">
                                     <a href="{% url 'blog_detail' blog.pk %}" title="{{ blog.title }}">
-                                        <img src="{{ blog.picture }}" alt="{{ blog.title }}">
+                                        <img src="/uploads/{{ blog.picture }}" alt="{{ blog.title }}">
                                     </a>
                                 </span>
                                 <p class="blogtext">

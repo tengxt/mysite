@@ -16,7 +16,7 @@ def home(request):
         blogs_val = Blog.objects.order_by('-last_updated_time')[:10]
         cache.set(blogs_key, blogs_val, 3600)
     context['get_article_all'] = blogs_val
-    context['background'] = pics_list()
+    #context['background'] = pics_list()
     return render(request, 'home.html', context)
 
 

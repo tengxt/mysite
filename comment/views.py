@@ -54,7 +54,6 @@ def comment(request):
     context['visitNumber'] =visitNumber['nums']
     context['blogNumber'] = Blog.objects.count()
     context['hot_blogs_for_7_days'] = get_7_days_hot_blogs()
-    context['background'] = pics_list()
     context['links_list'] = links_list()
     response = render(request, 'comment/comment.html', context)  # 响应
     return response

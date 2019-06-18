@@ -18,6 +18,8 @@ from django.urls import include, path
 from . import views
 from django.contrib.sitemaps.views import sitemap
 from .templatetags.BlogSitemap import BlogSitemap,AllPostsRssFeed
+from django.conf.urls.static import static
+from django.conf import settings
 
 blog_sitemaps ={
     'recipe':BlogSitemap
@@ -34,5 +36,5 @@ urlpatterns = [
     path('rss/', AllPostsRssFeed(), name='rss'),
     path('notifications/', include('notifications.urls', namespace='notifications')),
     path('my_notifications/', include('news.urls')),
-]
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

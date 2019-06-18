@@ -13,7 +13,7 @@
 
 {% block content %}
     <div class="align-center align-middle" id="masthead">
-        <div class="blog-background" style="background-image: url('{{ background }}');"></div>
+        <div class="blog-background" style="background-image: url('{% static 'images/home-bg.jpg' %}');"></div>
         <div class="inner"></div>
     </div>
     <div class="orther_body">
@@ -27,9 +27,9 @@
                          <article>
                             <a href="{% url 'blog_detail' blog.pk %}">
                                 <div class="post-card" id="post-card-{{ blog.pk }}">
-                                    <div class="blog-background" style="background-image: url({{ blog.picture }})"></div>
+                                    <div class="blog-background" style="background-image: url('/uploads/{{ blog.picture }}')"></div>
                                     <div class="lazyload-container"></div>
-                                    <img src="" style="display: none" onload="javascript:loadBanner(this, '{{ blog.picture }}', '', document.querySelector('#post-card-{{ blog.pk }}'), '-1', document.querySelector('#post-card-{{ blog.pk }}').offsetWidth, document.querySelector('#post-card-{{ blog.pk }}').offsetHeight)">
+                                    <img src="" style="display: none" onload="javascript:loadBanner(this, '/uploads/{{ blog.picture }}', '', document.querySelector('#post-card-{{ blog.pk }}'), '-1', document.querySelector('#post-card-{{ blog.pk }}').offsetWidth, document.querySelector('#post-card-{{ blog.pk }}').offsetHeight)">
 
                                     <div class="post-card-mask">
                                         <div class="post-card-container">
