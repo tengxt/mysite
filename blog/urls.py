@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,re_path
 from . import views
 
 # start with blog
@@ -12,4 +12,5 @@ urlpatterns = [
     path('share.html', views.blog_share, name='share_list'),
     path('timer.html', views.blog_timer, name='timer_list'),
     path('search.html', views.blog_search, name='search'),
+    re_path(r'^uploads/image/$', views.upload_image, name='upload_image'),
 ]

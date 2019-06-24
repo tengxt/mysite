@@ -3,9 +3,13 @@ from django.core.paginator import Paginator
 from django.core.cache import cache
 from django.conf import settings
 from django.db.models import Count
-from read_statistics.utils import get_7_days_hot_blogs, pics_list, links_list
+from read_statistics.utils import get_7_days_hot_blogs, links_list
 from .models import Blog, BlogType, BlogTag
 from read_statistics.utils import read_statistics_once_read
+
+from django.core.exceptions import PermissionDenied
+from django.core.files.storage import default_storage
+from django.http import JsonResponse
 
 
 def get_blog_list_common_data(request, blogs_all_list):
@@ -149,3 +153,27 @@ def blog_search(request):
     article_list = Blog.objects.filter(title__icontains=val)
     context = get_blog_list_common_data(request, article_list)
     return render(request, 'blog/blog_search.html', context)
+
+
+
+def upload_image(request):
+    if request.method == 'POST':
+        image = request.FILES['upload_image']
+        if image.name.split('.')[-1] in ['jpg', 'jpeg', 'png', 'bmp', 'gif']:
+            #这里的file_path指的是服务器上保存图片的路径
+            file_path = settings.MEDIA_ROOT + '/blog/image/' + image.name[-10:]
+            file_path = default_storage.save(file_path, image)
+            return JsonResponse({
+                'success': True,
+                #这里的file_path指的是访问该图片的url
+                'file_path': settings.MEDIA_URL + 'blog/image/' + file_path.split('/')[-1],
+                'msg': 'Success!'
+                })
+        else:
+            return JsonResponse({
+                'success': False,
+                'file_path': '',
+                'msg': 'Unexpected File Format!'
+                })
+    else:
+        raise PermissionDenied('Only Accept POST Request!')

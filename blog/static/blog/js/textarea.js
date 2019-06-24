@@ -8,8 +8,13 @@ $(function() {
         '|', 'code', 'link', 'image', 'blockquote',
         '|', 'hr', 'ul', 'ol', 'alignment', 'table',
         '|', 'html', 'markdown'
-        ],
-        codeLanguages: [
+        ], upload: {
+            url: '/uploads/image/',
+            params: {'csrfmiddlewaretoken': csrftoken,},
+            fileKey: 'upload_image',
+            connectionCount: 3,
+            leaveConfirm: 'Uploading is in progress, are you sure to leave this page?',
+        }, codeLanguages: [
             { name: 'Python', value: 'python' },
             { name: 'Django', value: 'django' },
             { name: 'Shell', value: 'shell' },
@@ -25,7 +30,24 @@ $(function() {
             { name: 'C#', value: 'cs' },
             { name: 'JSON', value: 'json' },
             { name: 'Markdown', value: 'markdown' },
-        ]
+        ],
     });
     $('#id_content').attr("data-autosave-confirm", "是否读取上次退出时未保存的草稿？");
 });
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+           var cookie = jQuery.trim(cookies[i]);
+           // Does this cookie string begin with the name we want?
+           if (cookie.substring(0, name.length + 1) === (name + '=')) {
+               cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+               break;
+           }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
